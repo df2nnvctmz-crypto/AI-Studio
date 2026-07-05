@@ -1,0 +1,2773 @@
+[
+  {
+    "id": "f001",
+    "name": "Cola (regular)",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 42,
+      "sugar_g": 10.6,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.02,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "E",
+    "health_score": 47.3,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f002",
+    "name": "Lemon-lime soda",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 41,
+      "sugar_g": 10.0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.02,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "E",
+    "health_score": 49.1,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f003",
+    "name": "Tonic water",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 34,
+      "sugar_g": 8.5,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "E",
+    "health_score": 52.7,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f004",
+    "name": "Orange soda",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 48,
+      "sugar_g": 12.0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.02,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "E",
+    "health_score": 45.5,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f005",
+    "name": "Energy drink",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 45,
+      "sugar_g": 11.0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.1,
+      "fiber_g": 0,
+      "protein_g": 0.4
+    },
+    "nutri_grade": "E",
+    "health_score": 45.5,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f006",
+    "name": "Sweetened iced tea",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 29,
+      "sugar_g": 7.0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "E",
+    "health_score": 54.5,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f007",
+    "name": "Fruit juice drink (10% juice)",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 46,
+      "sugar_g": 10.5,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 0,
+      "protein_g": 0.1
+    },
+    "nutri_grade": "E",
+    "health_score": 47.3,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f008",
+    "name": "100% orange juice",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 45,
+      "sugar_g": 8.8,
+      "fat_g": 0.2,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 0.2,
+      "protein_g": 0.7
+    },
+    "nutri_grade": "E",
+    "health_score": 49.1,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f009",
+    "name": "Cola (zero/diet)",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 1,
+      "sugar_g": 0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.02,
+      "fiber_g": 0,
+      "protein_g": 0.1
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f010",
+    "name": "Sparkling water (unsweetened)",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 0,
+      "sugar_g": 0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "A",
+    "health_score": 100,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f011",
+    "name": "Still water",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 0,
+      "sugar_g": 0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "A",
+    "health_score": 100,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f012",
+    "name": "Unsweetened iced tea",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 1,
+      "sugar_g": 0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f013",
+    "name": "Coconut water",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 19,
+      "sugar_g": 4.5,
+      "fat_g": 0.1,
+      "saturated_fat_g": 0,
+      "salt_g": 0.09,
+      "fiber_g": 0,
+      "protein_g": 0.4
+    },
+    "nutri_grade": "D",
+    "health_score": 61.8,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f014",
+    "name": "Semi-skimmed milk",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 46,
+      "sugar_g": 4.8,
+      "fat_g": 1.6,
+      "saturated_fat_g": 1.0,
+      "salt_g": 0.1,
+      "fiber_g": 0,
+      "protein_g": 3.4
+    },
+    "nutri_grade": "E",
+    "health_score": 52.7,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f015",
+    "name": "Chocolate-coated corn flakes",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 390,
+      "sugar_g": 32,
+      "fat_g": 4,
+      "saturated_fat_g": 2.5,
+      "salt_g": 0.9,
+      "fiber_g": 3,
+      "protein_g": 5
+    },
+    "nutri_grade": "D",
+    "health_score": 49.1,
+    "swap_suggestion_id": "f100"
+  },
+  {
+    "id": "f016",
+    "name": "Frosted flakes",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 378,
+      "sugar_g": 37,
+      "fat_g": 0.5,
+      "saturated_fat_g": 0.2,
+      "salt_g": 0.7,
+      "fiber_g": 1,
+      "protein_g": 4
+    },
+    "nutri_grade": "D",
+    "health_score": 47.3,
+    "swap_suggestion_id": "f100"
+  },
+  {
+    "id": "f017",
+    "name": "Honey puffed wheat",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 384,
+      "sugar_g": 32,
+      "fat_g": 2,
+      "saturated_fat_g": 0.4,
+      "salt_g": 0.6,
+      "fiber_g": 3,
+      "protein_g": 7
+    },
+    "nutri_grade": "C",
+    "health_score": 54.5,
+    "swap_suggestion_id": "f100"
+  },
+  {
+    "id": "f018",
+    "name": "Granola with chocolate chunks",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 470,
+      "sugar_g": 26,
+      "fat_g": 20,
+      "saturated_fat_g": 9,
+      "salt_g": 0.4,
+      "fiber_g": 6,
+      "protein_g": 8
+    },
+    "nutri_grade": "C",
+    "health_score": 54.5,
+    "swap_suggestion_id": "f100"
+  },
+  {
+    "id": "f019",
+    "name": "Fruit loops style cereal",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 385,
+      "sugar_g": 37,
+      "fat_g": 3,
+      "saturated_fat_g": 1,
+      "salt_g": 0.7,
+      "fiber_g": 2,
+      "protein_g": 5
+    },
+    "nutri_grade": "D",
+    "health_score": 49.1,
+    "swap_suggestion_id": "f100"
+  },
+  {
+    "id": "f020",
+    "name": "Corn flakes (plain)",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 357,
+      "sugar_g": 8,
+      "fat_g": 0.8,
+      "saturated_fat_g": 0.2,
+      "salt_g": 1.0,
+      "fiber_g": 3,
+      "protein_g": 7
+    },
+    "nutri_grade": "B",
+    "health_score": 69.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f021",
+    "name": "Porridge oats (rolled oats)",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 372,
+      "sugar_g": 1,
+      "fat_g": 7,
+      "saturated_fat_g": 1.3,
+      "salt_g": 0.01,
+      "fiber_g": 10,
+      "protein_g": 13
+    },
+    "nutri_grade": "A",
+    "health_score": 81.8,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f022",
+    "name": "Bran flakes",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 320,
+      "sugar_g": 14,
+      "fat_g": 2,
+      "saturated_fat_g": 0.4,
+      "salt_g": 1.1,
+      "fiber_g": 13,
+      "protein_g": 10
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f023",
+    "name": "Muesli (no added sugar)",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 360,
+      "sugar_g": 17,
+      "fat_g": 6,
+      "saturated_fat_g": 1,
+      "salt_g": 0.1,
+      "fiber_g": 8,
+      "protein_g": 10
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f024",
+    "name": "Puffed rice (plain)",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 387,
+      "sugar_g": 5,
+      "fat_g": 1,
+      "saturated_fat_g": 0.2,
+      "salt_g": 0.9,
+      "fiber_g": 1.5,
+      "protein_g": 6
+    },
+    "nutri_grade": "C",
+    "health_score": 65.5,
+    "swap_suggestion_id": "f100"
+  },
+  {
+    "id": "f025",
+    "name": "White toast bread",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 265,
+      "sugar_g": 5,
+      "fat_g": 3.2,
+      "saturated_fat_g": 0.7,
+      "salt_g": 1.1,
+      "fiber_g": 2.7,
+      "protein_g": 9
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f026",
+    "name": "Croissant",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 406,
+      "sugar_g": 8,
+      "fat_g": 21,
+      "saturated_fat_g": 12,
+      "salt_g": 0.9,
+      "fiber_g": 2,
+      "protein_g": 8
+    },
+    "nutri_grade": "D",
+    "health_score": 41.8,
+    "swap_suggestion_id": "f105"
+  },
+  {
+    "id": "f027",
+    "name": "Sweet breakfast bun",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 330,
+      "sugar_g": 20,
+      "fat_g": 10,
+      "saturated_fat_g": 5,
+      "salt_g": 0.6,
+      "fiber_g": 2,
+      "protein_g": 7
+    },
+    "nutri_grade": "D",
+    "health_score": 50.9,
+    "swap_suggestion_id": "f105"
+  },
+  {
+    "id": "f028",
+    "name": "Whole grain bread",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 247,
+      "sugar_g": 3,
+      "fat_g": 3.5,
+      "saturated_fat_g": 0.6,
+      "salt_g": 1.0,
+      "fiber_g": 7,
+      "protein_g": 9
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f029",
+    "name": "Rye bread",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 219,
+      "sugar_g": 2.5,
+      "fat_g": 1.2,
+      "saturated_fat_g": 0.2,
+      "salt_g": 1.2,
+      "fiber_g": 6,
+      "protein_g": 7
+    },
+    "nutri_grade": "A",
+    "health_score": 76.4,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f030",
+    "name": "Sourdough bread",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 250,
+      "sugar_g": 2,
+      "fat_g": 1.5,
+      "saturated_fat_g": 0.3,
+      "salt_g": 1.3,
+      "fiber_g": 3,
+      "protein_g": 8
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f031",
+    "name": "Bagel (plain)",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 275,
+      "sugar_g": 5,
+      "fat_g": 1.7,
+      "saturated_fat_g": 0.3,
+      "salt_g": 1.2,
+      "fiber_g": 2,
+      "protein_g": 10
+    },
+    "nutri_grade": "B",
+    "health_score": 69.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f032",
+    "name": "Fruit yogurt (sweetened)",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 95,
+      "sugar_g": 13,
+      "fat_g": 2.5,
+      "saturated_fat_g": 1.6,
+      "salt_g": 0.1,
+      "fiber_g": 0.2,
+      "protein_g": 3.5
+    },
+    "nutri_grade": "B",
+    "health_score": 69.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f033",
+    "name": "Chocolate pudding dessert",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 140,
+      "sugar_g": 17,
+      "fat_g": 4.5,
+      "saturated_fat_g": 3,
+      "salt_g": 0.15,
+      "fiber_g": 0.5,
+      "protein_g": 3
+    },
+    "nutri_grade": "C",
+    "health_score": 63.6,
+    "swap_suggestion_id": "f035"
+  },
+  {
+    "id": "f034",
+    "name": "Flavoured milk drink",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 75,
+      "sugar_g": 10,
+      "fat_g": 1.5,
+      "saturated_fat_g": 1,
+      "salt_g": 0.1,
+      "fiber_g": 0,
+      "protein_g": 3.2
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f035",
+    "name": "Greek yogurt (plain, 0% fat)",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 57,
+      "sugar_g": 4,
+      "fat_g": 0.2,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.06,
+      "fiber_g": 0,
+      "protein_g": 10
+    },
+    "nutri_grade": "A",
+    "health_score": 81.8,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f036",
+    "name": "Natural yogurt (whole milk)",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 61,
+      "sugar_g": 4.7,
+      "fat_g": 3.3,
+      "saturated_fat_g": 2.1,
+      "salt_g": 0.1,
+      "fiber_g": 0,
+      "protein_g": 3.5
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f037",
+    "name": "Skyr (plain)",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 63,
+      "sugar_g": 3.9,
+      "fat_g": 0.2,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.07,
+      "fiber_g": 0,
+      "protein_g": 11
+    },
+    "nutri_grade": "A",
+    "health_score": 81.8,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f038",
+    "name": "Cottage cheese (low fat)",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 84,
+      "sugar_g": 3.4,
+      "fat_g": 2,
+      "saturated_fat_g": 1.2,
+      "salt_g": 0.7,
+      "fiber_g": 0,
+      "protein_g": 12
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f039",
+    "name": "Potato chips (salted)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 536,
+      "sugar_g": 0.5,
+      "fat_g": 34,
+      "saturated_fat_g": 3,
+      "salt_g": 1.6,
+      "fiber_g": 4.5,
+      "protein_g": 6.6
+    },
+    "nutri_grade": "D",
+    "health_score": 52.7,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f040",
+    "name": "Cheese puffs / cheetos style",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 560,
+      "sugar_g": 2,
+      "fat_g": 35,
+      "saturated_fat_g": 5,
+      "salt_g": 2.0,
+      "fiber_g": 1,
+      "protein_g": 6
+    },
+    "nutri_grade": "D",
+    "health_score": 41.8,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f041",
+    "name": "Chocolate chip cookies",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 480,
+      "sugar_g": 29,
+      "fat_g": 22,
+      "saturated_fat_g": 12,
+      "salt_g": 0.6,
+      "fiber_g": 2,
+      "protein_g": 5.5
+    },
+    "nutri_grade": "E",
+    "health_score": 34.5,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f042",
+    "name": "Salted pretzels",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 380,
+      "sugar_g": 2,
+      "fat_g": 3,
+      "saturated_fat_g": 0.5,
+      "salt_g": 3.0,
+      "fiber_g": 3,
+      "protein_g": 10
+    },
+    "nutri_grade": "D",
+    "health_score": 52.7,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f043",
+    "name": "Nachos with cheese flavour",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 500,
+      "sugar_g": 3,
+      "fat_g": 25,
+      "saturated_fat_g": 3.5,
+      "salt_g": 2.2,
+      "fiber_g": 3,
+      "protein_g": 7
+    },
+    "nutri_grade": "D",
+    "health_score": 45.5,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f044",
+    "name": "Popcorn (sweet/caramel)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 430,
+      "sugar_g": 45,
+      "fat_g": 15,
+      "saturated_fat_g": 7,
+      "salt_g": 0.6,
+      "fiber_g": 4,
+      "protein_g": 3
+    },
+    "nutri_grade": "D",
+    "health_score": 40.0,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f045",
+    "name": "Baked vegetable chips",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 450,
+      "sugar_g": 4,
+      "fat_g": 22,
+      "saturated_fat_g": 2,
+      "salt_g": 1.2,
+      "fiber_g": 6,
+      "protein_g": 6
+    },
+    "nutri_grade": "C",
+    "health_score": 67.3,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f046",
+    "name": "Roasted unsalted almonds",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 579,
+      "sugar_g": 4.4,
+      "fat_g": 50,
+      "saturated_fat_g": 3.8,
+      "salt_g": 0.01,
+      "fiber_g": 12.5,
+      "protein_g": 21
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f047",
+    "name": "Plain popcorn (air-popped)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 387,
+      "sugar_g": 0.6,
+      "fat_g": 4.5,
+      "saturated_fat_g": 0.6,
+      "salt_g": 0.8,
+      "fiber_g": 14,
+      "protein_g": 13
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f048",
+    "name": "Rice cakes (plain)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 387,
+      "sugar_g": 0.2,
+      "fat_g": 2.8,
+      "saturated_fat_g": 0.6,
+      "salt_g": 0.02,
+      "fiber_g": 3,
+      "protein_g": 8
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f049",
+    "name": "Dried apricots",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 241,
+      "sugar_g": 53,
+      "fat_g": 0.5,
+      "saturated_fat_g": 0,
+      "salt_g": 0.02,
+      "fiber_g": 7,
+      "protein_g": 3.4
+    },
+    "nutri_grade": "C",
+    "health_score": 61.8,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f050",
+    "name": "Edamame (steamed, salted)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 122,
+      "sugar_g": 2.2,
+      "fat_g": 5,
+      "saturated_fat_g": 0.6,
+      "salt_g": 0.6,
+      "fiber_g": 5,
+      "protein_g": 11
+    },
+    "nutri_grade": "A",
+    "health_score": 85.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f051",
+    "name": "Milk chocolate bar",
+    "category": "Sweets & chocolate",
+    "nutrients_per_100": {
+      "kcal": 535,
+      "sugar_g": 51,
+      "fat_g": 30,
+      "saturated_fat_g": 18,
+      "salt_g": 0.2,
+      "fiber_g": 3,
+      "protein_g": 7.6
+    },
+    "nutri_grade": "E",
+    "health_score": 30.9,
+    "swap_suggestion_id": "f055"
+  },
+  {
+    "id": "f052",
+    "name": "Gummy sweets",
+    "category": "Sweets & chocolate",
+    "nutrients_per_100": {
+      "kcal": 340,
+      "sugar_g": 46,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.05,
+      "fiber_g": 0,
+      "protein_g": 6
+    },
+    "nutri_grade": "D",
+    "health_score": 47.3,
+    "swap_suggestion_id": "f055"
+  },
+  {
+    "id": "f053",
+    "name": "Chocolate hazelnut spread",
+    "category": "Sweets & chocolate",
+    "nutrients_per_100": {
+      "kcal": 539,
+      "sugar_g": 56,
+      "fat_g": 31,
+      "saturated_fat_g": 10.6,
+      "salt_g": 0.1,
+      "fiber_g": 3.4,
+      "protein_g": 6.3
+    },
+    "nutri_grade": "E",
+    "health_score": 30.9,
+    "swap_suggestion_id": "f055"
+  },
+  {
+    "id": "f054",
+    "name": "Dark chocolate (70%+)",
+    "category": "Sweets & chocolate",
+    "nutrients_per_100": {
+      "kcal": 598,
+      "sugar_g": 24,
+      "fat_g": 42,
+      "saturated_fat_g": 25,
+      "salt_g": 0.01,
+      "fiber_g": 11,
+      "protein_g": 7.8
+    },
+    "nutri_grade": "D",
+    "health_score": 49.1,
+    "swap_suggestion_id": "f055"
+  },
+  {
+    "id": "f055",
+    "name": "Dried dates",
+    "category": "Sweets & chocolate",
+    "nutrients_per_100": {
+      "kcal": 282,
+      "sugar_g": 63,
+      "fat_g": 0.4,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 7,
+      "protein_g": 2.5
+    },
+    "nutri_grade": "C",
+    "health_score": 60.0,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f056",
+    "name": "Ketchup",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 101,
+      "sugar_g": 22,
+      "fat_g": 0.2,
+      "saturated_fat_g": 0,
+      "salt_g": 2.1,
+      "fiber_g": 0.4,
+      "protein_g": 1.2
+    },
+    "nutri_grade": "D",
+    "health_score": 47.3,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f057",
+    "name": "Mayonnaise (regular)",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 680,
+      "sugar_g": 3,
+      "fat_g": 75,
+      "saturated_fat_g": 6,
+      "salt_g": 1.1,
+      "fiber_g": 0,
+      "protein_g": 1
+    },
+    "nutri_grade": "D",
+    "health_score": 41.8,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f058",
+    "name": "Barbecue sauce",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 172,
+      "sugar_g": 29,
+      "fat_g": 0.5,
+      "saturated_fat_g": 0.1,
+      "salt_g": 2.3,
+      "fiber_g": 0.5,
+      "protein_g": 1
+    },
+    "nutri_grade": "D",
+    "health_score": 40.0,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f059",
+    "name": "Salad cream style dressing",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 380,
+      "sugar_g": 15,
+      "fat_g": 32,
+      "saturated_fat_g": 3,
+      "salt_g": 1.7,
+      "fiber_g": 0,
+      "protein_g": 1.2
+    },
+    "nutri_grade": "D",
+    "health_score": 43.6,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f060",
+    "name": "Tomato passata / pasta sauce (plain)",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 35,
+      "sugar_g": 5,
+      "fat_g": 0.3,
+      "saturated_fat_g": 0,
+      "salt_g": 0.6,
+      "fiber_g": 1.5,
+      "protein_g": 1.5
+    },
+    "nutri_grade": "B",
+    "health_score": 69.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f061",
+    "name": "Hummus",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 177,
+      "sugar_g": 0.6,
+      "fat_g": 10,
+      "saturated_fat_g": 1.4,
+      "salt_g": 0.9,
+      "fiber_g": 4,
+      "protein_g": 6
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f062",
+    "name": "Mustard",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 66,
+      "sugar_g": 3.5,
+      "fat_g": 3,
+      "saturated_fat_g": 0.2,
+      "salt_g": 3.6,
+      "fiber_g": 2.5,
+      "protein_g": 4.4
+    },
+    "nutri_grade": "C",
+    "health_score": 61.8,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f063",
+    "name": "Guacamole",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 150,
+      "sugar_g": 0.7,
+      "fat_g": 14,
+      "saturated_fat_g": 2,
+      "salt_g": 0.8,
+      "fiber_g": 6.7,
+      "protein_g": 2
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f064",
+    "name": "Frozen pepperoni pizza",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 280,
+      "sugar_g": 4,
+      "fat_g": 13,
+      "saturated_fat_g": 5.5,
+      "salt_g": 1.4,
+      "fiber_g": 2,
+      "protein_g": 11
+    },
+    "nutri_grade": "D",
+    "health_score": 50.9,
+    "swap_suggestion_id": "f068"
+  },
+  {
+    "id": "f065",
+    "name": "Frozen chicken nuggets",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 280,
+      "sugar_g": 0.7,
+      "fat_g": 17,
+      "saturated_fat_g": 2.6,
+      "salt_g": 1.0,
+      "fiber_g": 1.5,
+      "protein_g": 15
+    },
+    "nutri_grade": "C",
+    "health_score": 67.3,
+    "swap_suggestion_id": "f068"
+  },
+  {
+    "id": "f066",
+    "name": "Microwave lasagne ready meal",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 140,
+      "sugar_g": 4,
+      "fat_g": 6,
+      "saturated_fat_g": 3,
+      "salt_g": 0.7,
+      "fiber_g": 1,
+      "protein_g": 7
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f067",
+    "name": "Frozen fish fingers",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 230,
+      "sugar_g": 0.8,
+      "fat_g": 11,
+      "saturated_fat_g": 1.5,
+      "salt_g": 0.9,
+      "fiber_g": 1,
+      "protein_g": 13
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f068",
+    "name": "Frozen vegetable stir-fry mix",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 65,
+      "sugar_g": 3,
+      "fat_g": 0.5,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.05,
+      "fiber_g": 3,
+      "protein_g": 3
+    },
+    "nutri_grade": "A",
+    "health_score": 80.0,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f069",
+    "name": "Frozen grilled chicken breast fillet",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 115,
+      "sugar_g": 0.5,
+      "fat_g": 2,
+      "saturated_fat_g": 0.5,
+      "salt_g": 0.9,
+      "fiber_g": 0,
+      "protein_g": 23
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f070",
+    "name": "Cauliflower crust veggie pizza",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 190,
+      "sugar_g": 3,
+      "fat_g": 7,
+      "saturated_fat_g": 3,
+      "salt_g": 1.0,
+      "fiber_g": 2.5,
+      "protein_g": 9
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f071",
+    "name": "Instant noodles (flavoured)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 436,
+      "sugar_g": 4,
+      "fat_g": 17,
+      "saturated_fat_g": 8,
+      "salt_g": 2.9,
+      "fiber_g": 2,
+      "protein_g": 9
+    },
+    "nutri_grade": "E",
+    "health_score": 36.4,
+    "swap_suggestion_id": "f076"
+  },
+  {
+    "id": "f072",
+    "name": "White pasta (cooked)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 158,
+      "sugar_g": 0.6,
+      "fat_g": 0.9,
+      "saturated_fat_g": 0.2,
+      "salt_g": 0.01,
+      "fiber_g": 1.8,
+      "protein_g": 5.8
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f073",
+    "name": "White rice (cooked)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 130,
+      "sugar_g": 0.1,
+      "fat_g": 0.3,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.001,
+      "fiber_g": 0.4,
+      "protein_g": 2.7
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f074",
+    "name": "Whole wheat pasta (cooked)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 149,
+      "sugar_g": 0.8,
+      "fat_g": 1.4,
+      "saturated_fat_g": 0.3,
+      "salt_g": 0.01,
+      "fiber_g": 4.5,
+      "protein_g": 6.3
+    },
+    "nutri_grade": "A",
+    "health_score": 83.6,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f075",
+    "name": "Brown rice (cooked)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 123,
+      "sugar_g": 0.2,
+      "fat_g": 1.0,
+      "saturated_fat_g": 0.2,
+      "salt_g": 0.005,
+      "fiber_g": 1.8,
+      "protein_g": 2.7
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f076",
+    "name": "Lentil pasta (cooked)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 155,
+      "sugar_g": 1.5,
+      "fat_g": 1.5,
+      "saturated_fat_g": 0.2,
+      "salt_g": 0.01,
+      "fiber_g": 6,
+      "protein_g": 10
+    },
+    "nutri_grade": "A",
+    "health_score": 89.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f077",
+    "name": "Quinoa (cooked)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 120,
+      "sugar_g": 0.9,
+      "fat_g": 1.9,
+      "saturated_fat_g": 0.2,
+      "salt_g": 0.005,
+      "fiber_g": 2.8,
+      "protein_g": 4.4
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f078",
+    "name": "Salami",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 407,
+      "sugar_g": 0.5,
+      "fat_g": 35,
+      "saturated_fat_g": 13,
+      "salt_g": 3.5,
+      "fiber_g": 0,
+      "protein_g": 22
+    },
+    "nutri_grade": "E",
+    "health_score": 27.3,
+    "swap_suggestion_id": "f144"
+  },
+  {
+    "id": "f079",
+    "name": "Hot dog sausage",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 290,
+      "sugar_g": 1,
+      "fat_g": 25,
+      "saturated_fat_g": 9,
+      "salt_g": 1.9,
+      "fiber_g": 0,
+      "protein_g": 11
+    },
+    "nutri_grade": "E",
+    "health_score": 38.2,
+    "swap_suggestion_id": "f144"
+  },
+  {
+    "id": "f080",
+    "name": "Bacon (fried)",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 541,
+      "sugar_g": 0,
+      "fat_g": 42,
+      "saturated_fat_g": 15,
+      "salt_g": 2.8,
+      "fiber_g": 0,
+      "protein_g": 37
+    },
+    "nutri_grade": "E",
+    "health_score": 25.5,
+    "swap_suggestion_id": "f144"
+  },
+  {
+    "id": "f081",
+    "name": "Sliced turkey breast (cooked, lean)",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 104,
+      "sugar_g": 0.5,
+      "fat_g": 1.6,
+      "saturated_fat_g": 0.5,
+      "salt_g": 1.2,
+      "fiber_g": 0,
+      "protein_g": 20
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f082",
+    "name": "Grilled chicken breast (skinless)",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 165,
+      "sugar_g": 0,
+      "fat_g": 3.6,
+      "saturated_fat_g": 1.0,
+      "salt_g": 0.2,
+      "fiber_g": 0,
+      "protein_g": 31
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f083",
+    "name": "Smoked salmon",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 117,
+      "sugar_g": 0,
+      "fat_g": 4.3,
+      "saturated_fat_g": 0.9,
+      "salt_g": 3.7,
+      "fiber_g": 0,
+      "protein_g": 18
+    },
+    "nutri_grade": "D",
+    "health_score": 52.7,
+    "swap_suggestion_id": "f144"
+  },
+  {
+    "id": "f084",
+    "name": "Cheeseburger (fast food)",
+    "category": "Fast food style",
+    "nutrients_per_100": {
+      "kcal": 295,
+      "sugar_g": 6,
+      "fat_g": 15,
+      "saturated_fat_g": 7,
+      "salt_g": 1.6,
+      "fiber_g": 1.5,
+      "protein_g": 16
+    },
+    "nutri_grade": "D",
+    "health_score": 43.6,
+    "swap_suggestion_id": "f089"
+  },
+  {
+    "id": "f085",
+    "name": "French fries",
+    "category": "Fast food style",
+    "nutrients_per_100": {
+      "kcal": 312,
+      "sugar_g": 0.3,
+      "fat_g": 15,
+      "saturated_fat_g": 2,
+      "salt_g": 0.9,
+      "fiber_g": 3,
+      "protein_g": 3.4
+    },
+    "nutri_grade": "B",
+    "health_score": 69.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f086",
+    "name": "Fried chicken (breaded)",
+    "category": "Fast food style",
+    "nutrients_per_100": {
+      "kcal": 270,
+      "sugar_g": 1,
+      "fat_g": 17,
+      "saturated_fat_g": 3,
+      "salt_g": 1.2,
+      "fiber_g": 1,
+      "protein_g": 17
+    },
+    "nutri_grade": "C",
+    "health_score": 65.5,
+    "swap_suggestion_id": "f089"
+  },
+  {
+    "id": "f087",
+    "name": "Grilled chicken wrap",
+    "category": "Fast food style",
+    "nutrients_per_100": {
+      "kcal": 210,
+      "sugar_g": 3,
+      "fat_g": 7,
+      "saturated_fat_g": 2,
+      "salt_g": 1.1,
+      "fiber_g": 3,
+      "protein_g": 15
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f088",
+    "name": "Baked sweet potato wedges",
+    "category": "Fast food style",
+    "nutrients_per_100": {
+      "kcal": 150,
+      "sugar_g": 4,
+      "fat_g": 4,
+      "saturated_fat_g": 0.6,
+      "salt_g": 0.5,
+      "fiber_g": 3,
+      "protein_g": 2.5
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f089",
+    "name": "Veggie burger (bean-based)",
+    "category": "Fast food style",
+    "nutrients_per_100": {
+      "kcal": 180,
+      "sugar_g": 3,
+      "fat_g": 6,
+      "saturated_fat_g": 1,
+      "salt_g": 1.0,
+      "fiber_g": 6,
+      "protein_g": 9
+    },
+    "nutri_grade": "A",
+    "health_score": 80.0,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f090",
+    "name": "Onion rings (fried)",
+    "category": "Fast food style",
+    "nutrients_per_100": {
+      "kcal": 280,
+      "sugar_g": 3,
+      "fat_g": 15,
+      "saturated_fat_g": 4,
+      "salt_g": 1.1,
+      "fiber_g": 2,
+      "protein_g": 4
+    },
+    "nutri_grade": "C",
+    "health_score": 61.8,
+    "swap_suggestion_id": "f089"
+  },
+  {
+    "id": "f091",
+    "name": "Grilled fish sandwich (fast food)",
+    "category": "Fast food style",
+    "nutrients_per_100": {
+      "kcal": 240,
+      "sugar_g": 3,
+      "fat_g": 9,
+      "saturated_fat_g": 2,
+      "salt_g": 1.0,
+      "fiber_g": 2,
+      "protein_g": 15
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f092",
+    "name": "Chocolate milkshake",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 112,
+      "sugar_g": 11,
+      "fat_g": 3.5,
+      "saturated_fat_g": 2.2,
+      "salt_g": 0.1,
+      "fiber_g": 0,
+      "protein_g": 3
+    },
+    "nutri_grade": "E",
+    "health_score": 36.4,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f093",
+    "name": "Sports drink (electrolyte)",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 26,
+      "sugar_g": 6,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.1,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "D",
+    "health_score": 58.2,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f094",
+    "name": "Cold brew coffee (black, unsweetened)",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 2,
+      "sugar_g": 0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 0,
+      "protein_g": 0.2
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f095",
+    "name": "Sweetened iced coffee latte",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 60,
+      "sugar_g": 8,
+      "fat_g": 1.6,
+      "saturated_fat_g": 1,
+      "salt_g": 0.08,
+      "fiber_g": 0,
+      "protein_g": 1.8
+    },
+    "nutri_grade": "E",
+    "health_score": 45.5,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f096",
+    "name": "Kombucha",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 29,
+      "sugar_g": 5,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "D",
+    "health_score": 56.4,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f097",
+    "name": "Hot chocolate (made with milk)",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 84,
+      "sugar_g": 10,
+      "fat_g": 3,
+      "saturated_fat_g": 1.8,
+      "salt_g": 0.1,
+      "fiber_g": 1,
+      "protein_g": 3.4
+    },
+    "nutri_grade": "E",
+    "health_score": 41.8,
+    "swap_suggestion_id": "f010"
+  },
+  {
+    "id": "f098",
+    "name": "Herbal tea (unsweetened)",
+    "category": "Beverages",
+    "nutrients_per_100": {
+      "kcal": 1,
+      "sugar_g": 0,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "A",
+    "health_score": 100,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f099",
+    "name": "Chocolate hoops cereal",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 380,
+      "sugar_g": 20,
+      "fat_g": 6,
+      "saturated_fat_g": 3,
+      "salt_g": 1.0,
+      "fiber_g": 4,
+      "protein_g": 7
+    },
+    "nutri_grade": "C",
+    "health_score": 54.5,
+    "swap_suggestion_id": "f100"
+  },
+  {
+    "id": "f100",
+    "name": "Shredded wheat",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 340,
+      "sugar_g": 1,
+      "fat_g": 2,
+      "saturated_fat_g": 0.3,
+      "salt_g": 0.02,
+      "fiber_g": 10,
+      "protein_g": 11
+    },
+    "nutri_grade": "A",
+    "health_score": 83.6,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f101",
+    "name": "Instant oatmeal (flavoured, sweetened)",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 370,
+      "sugar_g": 20,
+      "fat_g": 5,
+      "saturated_fat_g": 1,
+      "salt_g": 0.5,
+      "fiber_g": 6,
+      "protein_g": 8
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f102",
+    "name": "Overnight oats (plain, unsweetened)",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 150,
+      "sugar_g": 2,
+      "fat_g": 3,
+      "saturated_fat_g": 0.6,
+      "salt_g": 0.05,
+      "fiber_g": 3,
+      "protein_g": 5
+    },
+    "nutri_grade": "A",
+    "health_score": 81.8,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f103",
+    "name": "Cornflakes with added sugar coating",
+    "category": "Breakfast cereals",
+    "nutrients_per_100": {
+      "kcal": 384,
+      "sugar_g": 35,
+      "fat_g": 0.6,
+      "saturated_fat_g": 0.2,
+      "salt_g": 0.8,
+      "fiber_g": 1.5,
+      "protein_g": 4.5
+    },
+    "nutri_grade": "D",
+    "health_score": 49.1,
+    "swap_suggestion_id": "f100"
+  },
+  {
+    "id": "f104",
+    "name": "Chocolate-filled pastry",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 410,
+      "sugar_g": 22,
+      "fat_g": 20,
+      "saturated_fat_g": 10,
+      "salt_g": 0.6,
+      "fiber_g": 2,
+      "protein_g": 7
+    },
+    "nutri_grade": "D",
+    "health_score": 40.0,
+    "swap_suggestion_id": "f105"
+  },
+  {
+    "id": "f105",
+    "name": "Multigrain bread",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 239,
+      "sugar_g": 3,
+      "fat_g": 3,
+      "saturated_fat_g": 0.5,
+      "salt_g": 1.0,
+      "fiber_g": 6.5,
+      "protein_g": 9.5
+    },
+    "nutri_grade": "A",
+    "health_score": 80.0,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f106",
+    "name": "Pita bread (white)",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 275,
+      "sugar_g": 2,
+      "fat_g": 1.2,
+      "saturated_fat_g": 0.2,
+      "salt_g": 1.5,
+      "fiber_g": 3,
+      "protein_g": 9
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f107",
+    "name": "Naan bread",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 310,
+      "sugar_g": 3,
+      "fat_g": 7,
+      "saturated_fat_g": 3,
+      "salt_g": 1.2,
+      "fiber_g": 2,
+      "protein_g": 9
+    },
+    "nutri_grade": "C",
+    "health_score": 67.3,
+    "swap_suggestion_id": "f105"
+  },
+  {
+    "id": "f108",
+    "name": "Tortilla wrap (whole wheat)",
+    "category": "Bread & bakery",
+    "nutrients_per_100": {
+      "kcal": 230,
+      "sugar_g": 2,
+      "fat_g": 4,
+      "saturated_fat_g": 0.7,
+      "salt_g": 1.1,
+      "fiber_g": 6,
+      "protein_g": 8
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f109",
+    "name": "Ice cream (vanilla)",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 207,
+      "sugar_g": 21,
+      "fat_g": 11,
+      "saturated_fat_g": 7,
+      "salt_g": 0.15,
+      "fiber_g": 0.5,
+      "protein_g": 3.5
+    },
+    "nutri_grade": "D",
+    "health_score": 50.9,
+    "swap_suggestion_id": "f035"
+  },
+  {
+    "id": "f110",
+    "name": "Cream cheese (full fat)",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 342,
+      "sugar_g": 3,
+      "fat_g": 34,
+      "saturated_fat_g": 21,
+      "salt_g": 0.7,
+      "fiber_g": 0,
+      "protein_g": 6
+    },
+    "nutri_grade": "D",
+    "health_score": 41.8,
+    "swap_suggestion_id": "f035"
+  },
+  {
+    "id": "f111",
+    "name": "Kefir (plain, low fat)",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 41,
+      "sugar_g": 4,
+      "fat_g": 1,
+      "saturated_fat_g": 0.6,
+      "salt_g": 0.1,
+      "fiber_g": 0,
+      "protein_g": 3.4
+    },
+    "nutri_grade": "A",
+    "health_score": 76.4,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f112",
+    "name": "Ricotta cheese",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 174,
+      "sugar_g": 3,
+      "fat_g": 13,
+      "saturated_fat_g": 8,
+      "salt_g": 0.2,
+      "fiber_g": 0,
+      "protein_g": 11
+    },
+    "nutri_grade": "C",
+    "health_score": 65.5,
+    "swap_suggestion_id": "f035"
+  },
+  {
+    "id": "f113",
+    "name": "Soft cheese spread (flavoured)",
+    "category": "Dairy & yogurt",
+    "nutrients_per_100": {
+      "kcal": 245,
+      "sugar_g": 4,
+      "fat_g": 22,
+      "saturated_fat_g": 14,
+      "salt_g": 1.3,
+      "fiber_g": 0,
+      "protein_g": 7
+    },
+    "nutri_grade": "D",
+    "health_score": 40.0,
+    "swap_suggestion_id": "f035"
+  },
+  {
+    "id": "f114",
+    "name": "Beef jerky",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 410,
+      "sugar_g": 9,
+      "fat_g": 7,
+      "saturated_fat_g": 3,
+      "salt_g": 3.5,
+      "fiber_g": 0.5,
+      "protein_g": 33
+    },
+    "nutri_grade": "D",
+    "health_score": 40.0,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f115",
+    "name": "Trail mix (nuts, dried fruit, chocolate)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 480,
+      "sugar_g": 29,
+      "fat_g": 30,
+      "saturated_fat_g": 7,
+      "salt_g": 0.2,
+      "fiber_g": 5,
+      "protein_g": 10
+    },
+    "nutri_grade": "C",
+    "health_score": 60.0,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f116",
+    "name": "Cheese crackers",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 470,
+      "sugar_g": 4,
+      "fat_g": 22,
+      "saturated_fat_g": 7,
+      "salt_g": 1.8,
+      "fiber_g": 2,
+      "protein_g": 10
+    },
+    "nutri_grade": "D",
+    "health_score": 43.6,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f117",
+    "name": "Fruit snack gummies",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 320,
+      "sugar_g": 45,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.1,
+      "fiber_g": 1,
+      "protein_g": 3
+    },
+    "nutri_grade": "D",
+    "health_score": 52.7,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f118",
+    "name": "Vegetable sticks (carrot, cucumber)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 25,
+      "sugar_g": 3,
+      "fat_g": 0.2,
+      "saturated_fat_g": 0,
+      "salt_g": 0.05,
+      "fiber_g": 1.5,
+      "protein_g": 0.8
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f119",
+    "name": "Hummus with veggie sticks (portion)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 110,
+      "sugar_g": 2,
+      "fat_g": 6,
+      "saturated_fat_g": 0.8,
+      "salt_g": 0.6,
+      "fiber_g": 3,
+      "protein_g": 4
+    },
+    "nutri_grade": "A",
+    "health_score": 76.4,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f120",
+    "name": "Protein bar (high sugar)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 410,
+      "sugar_g": 32,
+      "fat_g": 15,
+      "saturated_fat_g": 7,
+      "salt_g": 0.5,
+      "fiber_g": 3,
+      "protein_g": 20
+    },
+    "nutri_grade": "D",
+    "health_score": 41.8,
+    "swap_suggestion_id": "f050"
+  },
+  {
+    "id": "f121",
+    "name": "Protein bar (low sugar)",
+    "category": "Snacks",
+    "nutrients_per_100": {
+      "kcal": 370,
+      "sugar_g": 4,
+      "fat_g": 14,
+      "saturated_fat_g": 4,
+      "salt_g": 0.6,
+      "fiber_g": 8,
+      "protein_g": 25
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f122",
+    "name": "Fruit-flavoured hard candy",
+    "category": "Sweets & chocolate",
+    "nutrients_per_100": {
+      "kcal": 394,
+      "sugar_g": 98,
+      "fat_g": 0,
+      "saturated_fat_g": 0,
+      "salt_g": 0.02,
+      "fiber_g": 0,
+      "protein_g": 0
+    },
+    "nutri_grade": "D",
+    "health_score": 47.3,
+    "swap_suggestion_id": "f055"
+  },
+  {
+    "id": "f123",
+    "name": "White chocolate bar",
+    "category": "Sweets & chocolate",
+    "nutrients_per_100": {
+      "kcal": 539,
+      "sugar_g": 59,
+      "fat_g": 32,
+      "saturated_fat_g": 19,
+      "salt_g": 0.15,
+      "fiber_g": 0,
+      "protein_g": 5.9
+    },
+    "nutri_grade": "E",
+    "health_score": 25.5,
+    "swap_suggestion_id": "f055"
+  },
+  {
+    "id": "f124",
+    "name": "Fig bars",
+    "category": "Sweets & chocolate",
+    "nutrients_per_100": {
+      "kcal": 356,
+      "sugar_g": 45,
+      "fat_g": 6,
+      "saturated_fat_g": 1,
+      "salt_g": 0.3,
+      "fiber_g": 5,
+      "protein_g": 4
+    },
+    "nutri_grade": "C",
+    "health_score": 60.0,
+    "swap_suggestion_id": "f055"
+  },
+  {
+    "id": "f125",
+    "name": "Dark chocolate-covered almonds",
+    "category": "Sweets & chocolate",
+    "nutrients_per_100": {
+      "kcal": 545,
+      "sugar_g": 32,
+      "fat_g": 38,
+      "saturated_fat_g": 10,
+      "salt_g": 0.05,
+      "fiber_g": 7,
+      "protein_g": 10
+    },
+    "nutri_grade": "D",
+    "health_score": 50.9,
+    "swap_suggestion_id": "f055"
+  },
+  {
+    "id": "f126",
+    "name": "Chocolate hazelnut spread (reduced sugar)",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 480,
+      "sugar_g": 28,
+      "fat_g": 32,
+      "saturated_fat_g": 7,
+      "salt_g": 0.15,
+      "fiber_g": 5,
+      "protein_g": 7
+    },
+    "nutri_grade": "C",
+    "health_score": 58.2,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f127",
+    "name": "Peanut butter (no added sugar)",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 588,
+      "sugar_g": 6,
+      "fat_g": 50,
+      "saturated_fat_g": 10,
+      "salt_g": 0.5,
+      "fiber_g": 6,
+      "protein_g": 25
+    },
+    "nutri_grade": "C",
+    "health_score": 56.4,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f128",
+    "name": "Peanut butter (sweetened)",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 600,
+      "sugar_g": 16,
+      "fat_g": 49,
+      "saturated_fat_g": 9,
+      "salt_g": 0.6,
+      "fiber_g": 5,
+      "protein_g": 22
+    },
+    "nutri_grade": "C",
+    "health_score": 54.5,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f129",
+    "name": "Soy sauce",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 60,
+      "sugar_g": 1,
+      "fat_g": 0.1,
+      "saturated_fat_g": 0,
+      "salt_g": 14,
+      "fiber_g": 0.8,
+      "protein_g": 6
+    },
+    "nutri_grade": "C",
+    "health_score": 60.0,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f130",
+    "name": "Pesto sauce",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 430,
+      "sugar_g": 2,
+      "fat_g": 42,
+      "saturated_fat_g": 7,
+      "salt_g": 1.8,
+      "fiber_g": 2,
+      "protein_g": 4
+    },
+    "nutri_grade": "D",
+    "health_score": 43.6,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f131",
+    "name": "Tzatziki",
+    "category": "Spreads & sauces",
+    "nutrients_per_100": {
+      "kcal": 85,
+      "sugar_g": 3,
+      "fat_g": 6,
+      "saturated_fat_g": 3,
+      "salt_g": 0.6,
+      "fiber_g": 0.3,
+      "protein_g": 3.5
+    },
+    "nutri_grade": "C",
+    "health_score": 67.3,
+    "swap_suggestion_id": "f061"
+  },
+  {
+    "id": "f132",
+    "name": "Frozen beef burrito",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 210,
+      "sugar_g": 2,
+      "fat_g": 8,
+      "saturated_fat_g": 3,
+      "salt_g": 1.0,
+      "fiber_g": 3,
+      "protein_g": 9
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f133",
+    "name": "Frozen mixed berries",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 42,
+      "sugar_g": 7,
+      "fat_g": 0.3,
+      "saturated_fat_g": 0,
+      "salt_g": 0.001,
+      "fiber_g": 2.5,
+      "protein_g": 0.7
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f134",
+    "name": "Frozen mashed potato (instant)",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 110,
+      "sugar_g": 1,
+      "fat_g": 3,
+      "saturated_fat_g": 1.5,
+      "salt_g": 0.6,
+      "fiber_g": 1.5,
+      "protein_g": 2
+    },
+    "nutri_grade": "B",
+    "health_score": 69.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f135",
+    "name": "Frozen salmon fillet",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 142,
+      "sugar_g": 0,
+      "fat_g": 6,
+      "saturated_fat_g": 1.2,
+      "salt_g": 0.1,
+      "fiber_g": 0,
+      "protein_g": 20
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f136",
+    "name": "Frozen falafel",
+    "category": "Frozen meals & pizza",
+    "nutrients_per_100": {
+      "kcal": 290,
+      "sugar_g": 2,
+      "fat_g": 17,
+      "saturated_fat_g": 2,
+      "salt_g": 0.9,
+      "fiber_g": 5,
+      "protein_g": 8
+    },
+    "nutri_grade": "A",
+    "health_score": 76.4,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f137",
+    "name": "Mac and cheese (boxed, prepared)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 190,
+      "sugar_g": 3,
+      "fat_g": 8,
+      "saturated_fat_g": 4,
+      "salt_g": 0.9,
+      "fiber_g": 1,
+      "protein_g": 7
+    },
+    "nutri_grade": "C",
+    "health_score": 67.3,
+    "swap_suggestion_id": "f076"
+  },
+  {
+    "id": "f138",
+    "name": "Couscous (cooked)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 112,
+      "sugar_g": 0.1,
+      "fat_g": 0.2,
+      "saturated_fat_g": 0,
+      "salt_g": 0.005,
+      "fiber_g": 1.4,
+      "protein_g": 3.8
+    },
+    "nutri_grade": "A",
+    "health_score": 76.4,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f139",
+    "name": "Egg noodles (cooked)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 138,
+      "sugar_g": 0.5,
+      "fat_g": 2.1,
+      "saturated_fat_g": 0.5,
+      "salt_g": 0.02,
+      "fiber_g": 1.2,
+      "protein_g": 4.5
+    },
+    "nutri_grade": "A",
+    "health_score": 76.4,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f140",
+    "name": "Rice noodles (cooked)",
+    "category": "Pasta, rice & noodles",
+    "nutrients_per_100": {
+      "kcal": 109,
+      "sugar_g": 0.1,
+      "fat_g": 0.2,
+      "saturated_fat_g": 0,
+      "salt_g": 0.01,
+      "fiber_g": 0.9,
+      "protein_g": 1.8
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f141",
+    "name": "Chorizo",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 455,
+      "sugar_g": 1,
+      "fat_g": 38,
+      "saturated_fat_g": 14,
+      "salt_g": 4.5,
+      "fiber_g": 0,
+      "protein_g": 24
+    },
+    "nutri_grade": "E",
+    "health_score": 27.3,
+    "swap_suggestion_id": "f144"
+  },
+  {
+    "id": "f142",
+    "name": "Ham (cooked, sliced)",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 145,
+      "sugar_g": 1,
+      "fat_g": 5,
+      "saturated_fat_g": 1.8,
+      "salt_g": 2.5,
+      "fiber_g": 0,
+      "protein_g": 20
+    },
+    "nutri_grade": "D",
+    "health_score": 50.9,
+    "swap_suggestion_id": "f144"
+  },
+  {
+    "id": "f143",
+    "name": "Rotisserie chicken (skin on)",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 239,
+      "sugar_g": 0,
+      "fat_g": 15,
+      "saturated_fat_g": 4,
+      "salt_g": 0.9,
+      "fiber_g": 0,
+      "protein_g": 25
+    },
+    "nutri_grade": "C",
+    "health_score": 67.3,
+    "swap_suggestion_id": "f144"
+  },
+  {
+    "id": "f144",
+    "name": "Tofu (firm)",
+    "category": "Deli & processed meat",
+    "nutrients_per_100": {
+      "kcal": 144,
+      "sugar_g": 0.6,
+      "fat_g": 8.7,
+      "saturated_fat_g": 1.3,
+      "salt_g": 0.01,
+      "fiber_g": 2.3,
+      "protein_g": 15.5
+    },
+    "nutri_grade": "A",
+    "health_score": 81.8,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f145",
+    "name": "Banana",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 89,
+      "sugar_g": 12,
+      "fat_g": 0.3,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.001,
+      "fiber_g": 2.6,
+      "protein_g": 1.1
+    },
+    "nutri_grade": "B",
+    "health_score": 70.9,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f146",
+    "name": "Apple (with skin)",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 52,
+      "sugar_g": 10,
+      "fat_g": 0.2,
+      "saturated_fat_g": 0,
+      "salt_g": 0.001,
+      "fiber_g": 2.4,
+      "protein_g": 0.3
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f147",
+    "name": "Avocado",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 160,
+      "sugar_g": 0.7,
+      "fat_g": 15,
+      "saturated_fat_g": 2.1,
+      "salt_g": 0.007,
+      "fiber_g": 6.7,
+      "protein_g": 2
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f148",
+    "name": "Grapes",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 69,
+      "sugar_g": 16,
+      "fat_g": 0.2,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.002,
+      "fiber_g": 0.9,
+      "protein_g": 0.7
+    },
+    "nutri_grade": "C",
+    "health_score": 67.3,
+    "swap_suggestion_id": "f149"
+  },
+  {
+    "id": "f149",
+    "name": "Broccoli (steamed)",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 35,
+      "sugar_g": 1.4,
+      "fat_g": 0.4,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.03,
+      "fiber_g": 3.3,
+      "protein_g": 2.8
+    },
+    "nutri_grade": "A",
+    "health_score": 80.0,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f150",
+    "name": "Sweet potato (baked)",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 90,
+      "sugar_g": 5.7,
+      "fat_g": 0.1,
+      "saturated_fat_g": 0,
+      "salt_g": 0.04,
+      "fiber_g": 3,
+      "protein_g": 2
+    },
+    "nutri_grade": "A",
+    "health_score": 76.4,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f151",
+    "name": "Canned peaches in syrup",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 68,
+      "sugar_g": 16,
+      "fat_g": 0.1,
+      "saturated_fat_g": 0,
+      "salt_g": 0.004,
+      "fiber_g": 1,
+      "protein_g": 0.5
+    },
+    "nutri_grade": "B",
+    "health_score": 69.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f152",
+    "name": "Dried mango (sweetened)",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 319,
+      "sugar_g": 63,
+      "fat_g": 0.9,
+      "saturated_fat_g": 0.2,
+      "salt_g": 0.03,
+      "fiber_g": 3.2,
+      "protein_g": 2
+    },
+    "nutri_grade": "C",
+    "health_score": 54.5,
+    "swap_suggestion_id": "f149"
+  },
+  {
+    "id": "f153",
+    "name": "Spinach (raw)",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 23,
+      "sugar_g": 0.4,
+      "fat_g": 0.4,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.08,
+      "fiber_g": 2.2,
+      "protein_g": 2.9
+    },
+    "nutri_grade": "A",
+    "health_score": 78.2,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f154",
+    "name": "Vegetable crisps (fried)",
+    "category": "Fruits & vegetables",
+    "nutrients_per_100": {
+      "kcal": 502,
+      "sugar_g": 5,
+      "fat_g": 32,
+      "saturated_fat_g": 4,
+      "salt_g": 1.6,
+      "fiber_g": 5,
+      "protein_g": 4
+    },
+    "nutri_grade": "C",
+    "health_score": 54.5,
+    "swap_suggestion_id": "f149"
+  },
+  {
+    "id": "f155",
+    "name": "Chickpeas (cooked)",
+    "category": "Legumes & plant protein",
+    "nutrients_per_100": {
+      "kcal": 164,
+      "sugar_g": 3,
+      "fat_g": 2.6,
+      "saturated_fat_g": 0.3,
+      "salt_g": 0.01,
+      "fiber_g": 7.6,
+      "protein_g": 8.9
+    },
+    "nutri_grade": "A",
+    "health_score": 87.3,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f156",
+    "name": "Black beans (cooked)",
+    "category": "Legumes & plant protein",
+    "nutrients_per_100": {
+      "kcal": 132,
+      "sugar_g": 0.3,
+      "fat_g": 0.5,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.002,
+      "fiber_g": 8.7,
+      "protein_g": 8.9
+    },
+    "nutri_grade": "A",
+    "health_score": 89.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f157",
+    "name": "Lentils (cooked)",
+    "category": "Legumes & plant protein",
+    "nutrients_per_100": {
+      "kcal": 116,
+      "sugar_g": 1.8,
+      "fat_g": 0.4,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.004,
+      "fiber_g": 7.9,
+      "protein_g": 9
+    },
+    "nutri_grade": "A",
+    "health_score": 89.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f158",
+    "name": "Falafel (fried, homemade style)",
+    "category": "Legumes & plant protein",
+    "nutrients_per_100": {
+      "kcal": 333,
+      "sugar_g": 2,
+      "fat_g": 18,
+      "saturated_fat_g": 2.3,
+      "salt_g": 1.1,
+      "fiber_g": 4.9,
+      "protein_g": 13.3
+    },
+    "nutri_grade": "B",
+    "health_score": 72.7,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f159",
+    "name": "Canned baked beans (in sauce)",
+    "category": "Legumes & plant protein",
+    "nutrients_per_100": {
+      "kcal": 94,
+      "sugar_g": 5.5,
+      "fat_g": 0.5,
+      "saturated_fat_g": 0.1,
+      "salt_g": 0.9,
+      "fiber_g": 3.7,
+      "protein_g": 5.2
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f160",
+    "name": "Tempeh",
+    "category": "Legumes & plant protein",
+    "nutrients_per_100": {
+      "kcal": 192,
+      "sugar_g": 0,
+      "fat_g": 11,
+      "saturated_fat_g": 2.2,
+      "salt_g": 0.009,
+      "fiber_g": 9,
+      "protein_g": 20.3
+    },
+    "nutri_grade": "A",
+    "health_score": 83.6,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f161",
+    "name": "Edamame (shelled, cooked)",
+    "category": "Legumes & plant protein",
+    "nutrients_per_100": {
+      "kcal": 121,
+      "sugar_g": 2.2,
+      "fat_g": 5.2,
+      "saturated_fat_g": 0.6,
+      "salt_g": 0.003,
+      "fiber_g": 5.2,
+      "protein_g": 11.9
+    },
+    "nutri_grade": "A",
+    "health_score": 89.1,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f162",
+    "name": "Soy milk (unsweetened)",
+    "category": "Legumes & plant protein",
+    "nutrients_per_100": {
+      "kcal": 33,
+      "sugar_g": 0.6,
+      "fat_g": 1.8,
+      "saturated_fat_g": 0.2,
+      "salt_g": 0.05,
+      "fiber_g": 0.6,
+      "protein_g": 3.3
+    },
+    "nutri_grade": "A",
+    "health_score": 76.4,
+    "swap_suggestion_id": null
+  },
+  {
+    "id": "f163",
+    "name": "Soy milk (sweetened, chocolate)",
+    "category": "Legumes & plant protein",
+    "nutrients_per_100": {
+      "kcal": 65,
+      "sugar_g": 7,
+      "fat_g": 2,
+      "saturated_fat_g": 0.3,
+      "salt_g": 0.1,
+      "fiber_g": 1.2,
+      "protein_g": 3
+    },
+    "nutri_grade": "A",
+    "health_score": 74.5,
+    "swap_suggestion_id": null
+  }
+]

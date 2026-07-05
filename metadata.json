@@ -1,0 +1,6 @@
+{
+  "name": "Groceries – Smart Nutrition & Swaps",
+  "description": "A modern, mobile-first companion for discovering smart food swaps, tracking nutrition quality via NOVA scores, and finding healthier grocery options.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
