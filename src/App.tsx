@@ -491,6 +491,8 @@ export default function App() {
   const [swapsFavoritesOnly, setSwapsFavoritesOnly] = useState<boolean>(false);
   const [searchMaxCalories, setSearchMaxCalories] = useState<number>(1000);
   const [searchQuery, setSearchQuery] = useState("");
+  const [foodDisplayLimit, setFoodDisplayLimit] = useState(20);
+  const [randomSeed] = useState(() => Math.random() * 1000);
   const [selectedFoodId, setSelectedFoodId] = useState<string | null>(null);
   const [expandedSwapId, setExpandedSwapId] = useState<string | null>(null);
   const [animationTrigger, setAnimationTrigger] = useState(0);
@@ -1133,10 +1135,57 @@ export default function App() {
     return Array.from(map.values()).map(f => getTranslatedFood(f, language));
   }, [dynamicFoods, language]);
 
+  const evaluateSwap = (currentFood: Food, candidate: Food, preference: string) => {
+    let score = 0;
+    
+    // Anything over 90 is essentially perfect. We don't need to reward a 100 much more than a 90.
+    const effectiveCandidateScore = Math.min(candidate.health_score, 90);
+    const scoreDiff = effectiveCandidateScore - currentFood.health_score;
+    
+    if (scoreDiff > 0) {
+      // Incremental steps: use square root to give diminishing returns to huge score leaps.
+      // A jump of 25 points gives 5 * 2 = 10 pts. A jump of 64 gives 8 * 2 = 16 pts.
+      score += Math.sqrt(scoreDiff) * 2;
+    }
+
+    // Closer category matching emphasis
+    if (candidate.category === currentFood.category) score += 10;
+    if (candidate.subCategory && currentFood.subCategory && candidate.subCategory === currentFood.subCategory) score += 20;
+    if (candidate.swiss_category && currentFood.swiss_category && candidate.swiss_category === currentFood.swiss_category) score += 20;
+    
+    // Better macronutrients based on preference
+    if (preference === 'High Protein' && candidate.nutrients_per_100.protein_g > currentFood.nutrients_per_100.protein_g) score += 5;
+    if (preference === 'Low Carb' && candidate.nutrients_per_100.carbs_g < currentFood.nutrients_per_100.carbs_g) score += 5;
+    
+    // Better micronutrients (simple check: more non-null micros)
+    const curMicrosCount = Object.values(currentFood.nutrients_per_100.micros || {}).filter(v => v !== null && v !== undefined && v > 0).length;
+    const candMicrosCount = Object.values(candidate.nutrients_per_100.micros || {}).filter(v => v !== null && v !== undefined && v > 0).length;
+    if (candMicrosCount > curMicrosCount) {
+      score += 3;
+    }
+
+    return score;
+  };
+
   const getSmartSwapsForFood = (currentFood: Food) => {
-    if (!currentFood.swap_suggestion_id) return [];
-    const swapFood = allFoods.find(f => f.id === currentFood.swap_suggestion_id);
-    if (!swapFood) return [];
+    if (currentFood.health_score >= 80) return [];
+    
+    const candidates = allFoods.filter(f => 
+      f.id !== currentFood.id &&
+      f.health_score > 75 &&
+      f.health_score > currentFood.health_score &&
+      f.category === currentFood.category && // Must at least share category
+      matchesDietaryPreference(f, userProfile.dietaryPreference)
+    );
+    
+    if (candidates.length === 0) return [];
+    
+    const sortedCandidates = candidates.sort((a, b) => 
+      evaluateSwap(currentFood, b, userProfile.dietaryPreference) - evaluateSwap(currentFood, a, userProfile.dietaryPreference)
+    );
+    
+    const swapFood = sortedCandidates[0];
+    
     return [{
       fromFood: currentFood,
       toFood: swapFood,
@@ -1148,15 +1197,35 @@ export default function App() {
   const recommendedSwaps = useMemo(() => {
     const validSwaps: { fromId: string, toId: string }[] = [];
     allFoods.forEach(food => {
-      if (food.swap_suggestion_id) {
-        const swapFood = allFoods.find(f => f.id === food.swap_suggestion_id);
-        if (swapFood) {
-          validSwaps.push({ fromId: food.id, toId: swapFood.id });
+      if (food.health_score < 80) {
+        const candidates = allFoods.filter(f => 
+          f.id !== food.id &&
+          f.health_score > 75 &&
+          f.health_score > food.health_score &&
+          f.category === food.category && // Must at least share category
+          matchesDietaryPreference(f, userProfile.dietaryPreference)
+        );
+        if (candidates.length > 0) {
+          const sortedCandidates = candidates.sort((a, b) => 
+            evaluateSwap(food, b, userProfile.dietaryPreference) - evaluateSwap(food, a, userProfile.dietaryPreference)
+          );
+          validSwaps.push({ fromId: food.id, toId: sortedCandidates[0].id });
         }
       }
     });
-    return validSwaps;
-  }, []);
+    
+    // Sort swaps to put the highest scoreDiff first
+    validSwaps.sort((a, b) => {
+      const fromA = allFoods.find(f => f.id === a.fromId);
+      const toA = allFoods.find(f => f.id === a.toId);
+      const fromB = allFoods.find(f => f.id === b.fromId);
+      const toB = allFoods.find(f => f.id === b.toId);
+      if (!fromA || !toA || !fromB || !toB) return 0;
+      return (toB.health_score - fromB.health_score) - (toA.health_score - fromA.health_score);
+    });
+    
+    return validSwaps.slice(0, 15);
+  }, [allFoods, userProfile.dietaryPreference]);
 
   const getBillItemSwap = (foodItem: Food, preference: string) => {
     // Find a food in the same category that has a higher health_score and matches dietaryPreference
@@ -1206,7 +1275,15 @@ export default function App() {
     }
   };
 
-  const foodsMatchingPreference = allFoods.filter(f => matchesDietaryPreference(f, userProfile.dietaryPreference));
+  const foodsMatchingPreference = useMemo(() => {
+    return [...allFoods]
+      .filter(f => matchesDietaryPreference(f, userProfile.dietaryPreference))
+      .sort((a, b) => {
+        const aVal = Math.sin(a.id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) + randomSeed);
+        const bVal = Math.sin(b.id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) + randomSeed);
+        return aVal - bVal;
+      });
+  }, [allFoods, userProfile.dietaryPreference, randomSeed]);
   const spotlightFood = foodsMatchingPreference.find(f => f.id === "hass_avocado") || foodsMatchingPreference[0] || allFoods[0];
 
   // Recommendations mapping
@@ -1248,6 +1325,8 @@ export default function App() {
   };
 
   // Filters logic with advanced synonym, cross-language, and tab-aware category rules
+  useEffect(() => { setFoodDisplayLimit(20); }, [searchQuery, activeTab, selectedCategory]);
+
   const filteredFoods = allFoods.filter(food => {
     const effectiveCategory = activeTab === "search" ? "All" : selectedCategory;
     const categoryMatches = effectiveCategory === "All" || food.category === effectiveCategory;
@@ -1314,7 +1393,7 @@ export default function App() {
       searchMatches = nameMatch || origNameMatch || synonymMatch || catMatch || customCatMatch;
     }
     
-    const preferenceMatches = matchesDietaryPreference(food, userProfile.dietaryPreference);
+    const preferenceMatches = query ? true : matchesDietaryPreference(food, userProfile.dietaryPreference);
     
     // Advanced Filters (only in search tab)
     let advancedMatches = true;
@@ -1341,6 +1420,55 @@ export default function App() {
     
     return categoryMatches && searchMatches && preferenceMatches && advancedMatches;
   });
+
+  const queryForSort = normalizeText(searchQuery).trim();
+  if (queryForSort) {
+    filteredFoods.sort((a, b) => {
+      const aName = normalizeText(a.name);
+      const bName = normalizeText(b.name);
+      
+      const aExact = aName === queryForSort;
+      const bExact = bName === queryForSort;
+      if (aExact && !bExact) return -1;
+      if (!aExact && bExact) return 1;
+
+      const aStartsWith = aName.startsWith(queryForSort);
+      const bStartsWith = bName.startsWith(queryForSort);
+      if (aStartsWith && !bStartsWith) return -1;
+      if (!aStartsWith && bStartsWith) return 1;
+      
+      const aIncludes = aName.includes(queryForSort);
+      const bIncludes = bName.includes(queryForSort);
+      
+      if (aIncludes && bIncludes) {
+        // Both include the query, prioritize the one where the query appears earlier
+        const aIndex = aName.indexOf(queryForSort);
+        const bIndex = bName.indexOf(queryForSort);
+        if (aIndex !== bIndex) {
+          return aIndex - bIndex;
+        }
+      } else if (aIncludes && !bIncludes) {
+        return -1;
+      } else if (!aIncludes && bIncludes) {
+        return 1;
+      }
+
+      // If lengths are different, prefer the shorter string (more exact match)
+      if (aName.length !== bName.length) {
+        return aName.length - bName.length;
+      }
+
+      return aName.localeCompare(bName);
+    });
+  } else {
+    filteredFoods.sort((a, b) => {
+      const aVal = Math.sin(a.id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) + randomSeed);
+      const bVal = Math.sin(b.id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) + randomSeed);
+      return aVal - bVal;
+    });
+  }
+  
+  const limitedFilteredFoods = filteredFoods.slice(0, foodDisplayLimit);
 
   const popularSearches = language === 'en'
     ? ["Dairy", "Produce", "Snacks", "Beverages", "Pantry"]
@@ -2125,7 +2253,7 @@ export default function App() {
                 </h4>
 
                 <div className="space-y-2.5">
-                  {filteredFoods.map((food, index) => {
+                  {limitedFilteredFoods.map((food, index) => {
                     const colors = getScoreColors(food.health_score);
                     const nova = getNutriGradeDetails(food.nutri_grade);
                     return (
@@ -2180,7 +2308,7 @@ export default function App() {
                     );
                   })}
 
-                  {filteredFoods.length === 0 && (
+                  {limitedFilteredFoods.length === 0 && (
                     <div className="bg-white dark:bg-neutral-900 rounded-xl border border-[#E5EAE3] dark:border-neutral-800 p-10 text-center space-y-3">
                       <div className="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center mx-auto text-rose-500">
                         <Info className="w-5 h-5" />
@@ -2192,6 +2320,14 @@ export default function App() {
                         </p>
                       </div>
                     </div>
+                  )}
+                  {filteredFoods.length > foodDisplayLimit && (
+                    <button
+                      onClick={() => setFoodDisplayLimit(prev => prev + 20)}
+                      className="w-full mt-4 bg-white dark:bg-neutral-900 rounded-xl border border-[#E5EAE3] dark:border-neutral-800 p-4 text-center font-bold text-sm text-[#519D46] dark:text-emerald-400 hover:bg-[#F2F6F1] dark:hover:bg-emerald-950/30 transition-colors shadow-sm"
+                    >
+                      {language === 'en' ? 'Load 20 more' : '20 weitere laden'}
+                    </button>
                   )}
                 </div>
               </div>
@@ -2368,7 +2504,7 @@ export default function App() {
                             </div>
 
                             {/* Macro comparison rows */}
-                            {Object.keys(fromFood.nutrients_per_100).map(macro => {
+                            {Object.keys(fromFood.nutrients_per_100).filter(macro => macro !== 'kcal' && macro !== 'micros').map(macro => {
                               const fromVal = fromFood.nutrients_per_100[macro as keyof typeof fromFood.nutrients_per_100];
                               const toVal = toFood.nutrients_per_100[macro as keyof typeof toFood.nutrients_per_100];
                               const better = isBetterNutrient(macro, fromVal, toVal);
