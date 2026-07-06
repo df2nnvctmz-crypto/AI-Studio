@@ -25,7 +25,7 @@ import {
   ChevronDown,
   Settings2,
   FileImage,
-  ArrowLeft,
+  ArrowLeft, Filter, SlidersHorizontal, ChevronUp,
   AlertTriangle,
   ExternalLink,
   Trash2,
@@ -93,7 +93,7 @@ const getMacroDV = (macroName: string, amount: number) => {
     protein_g: 50,
     carbs_g: 275,
     fiber_g: 28,
-    sugar_g: 50,
+    sugars_g: 50,
     fat_g: 78,
     saturated_fat_g: 20,
     salt_g: 6 
@@ -109,7 +109,7 @@ const isBetterNutrient = (macroName: string, fromVal: number, toVal: number) => 
   return toVal <= fromVal;
 };
 
-const ScoreRing = ({ score, size = 64, strokeWidth = 5 }: { score: number, size?: number, strokeWidth?: number }) => {
+const ScoreRing = ({ score, size = 64, strokeWidth = 5, textSizeClass }: { score: number, size?: number, strokeWidth?: number, textSizeClass?: string }) => {
   const validScore = typeof score === 'number' && !isNaN(score) ? score : 0;
   const radius = (size - strokeWidth) / 2;
   const circumference = radius * 2 * Math.PI;
@@ -123,6 +123,7 @@ const ScoreRing = ({ score, size = 64, strokeWidth = 5 }: { score: number, size?
   }, [validScore, circumference]);
   
   const colors = getScoreColors(validScore);
+  const computedTextClass = textSizeClass || (size >= 96 ? "text-4xl" : size >= 84 ? "text-3xl" : size >= 64 ? "text-xl" : "text-sm");
   
   return (
     <div className="relative" style={{ width: size, height: size }}>
@@ -131,7 +132,7 @@ const ScoreRing = ({ score, size = 64, strokeWidth = 5 }: { score: number, size?
         <circle className={colors.text} strokeWidth={strokeWidth} strokeDasharray={circumference} strokeDashoffset={offset} strokeLinecap="round" stroke="currentColor" fill="transparent" r={radius} cx={size/2} cy={size/2} style={{ transition: "stroke-dashoffset 1s ease-in-out" }} />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className={`text-sm font-bold ${colors.text}`}>{Math.round(validScore)}</span>
+        <span className={`${computedTextClass} font-bold ${colors.text}`}>{Math.round(validScore)}</span>
       </div>
     </div>
   );
@@ -481,6 +482,14 @@ export default function App() {
     mainHasSwiped.current = false;
   };
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+  const [searchCategory, setSearchCategory] = useState("All");
+  const [searchSubCategory, setSearchSubCategory] = useState("All");
+  const [searchNutriScores, setSearchNutriScores] = useState<string[]>([]);
+  const [searchNovaScores, setSearchNovaScores] = useState<number[]>([]);
+  const [searchFavoritesOnly, setSearchFavoritesOnly] = useState<boolean>(false);
+  const [swapsFavoritesOnly, setSwapsFavoritesOnly] = useState<boolean>(false);
+  const [searchMaxCalories, setSearchMaxCalories] = useState<number>(1000);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedFoodId, setSelectedFoodId] = useState<string | null>(null);
   const [expandedSwapId, setExpandedSwapId] = useState<string | null>(null);
@@ -743,7 +752,7 @@ export default function App() {
                 
                 
                 
-                nutrients_per_100: { protein_g: 2, fiber_g: 6.7, sugar_g: 0.6, fat_g: 14.7, saturated_fat_g: 2.1, salt_g: 7, kcal: 100 },
+                nutrients_per_100: { protein_g: 2, carbs_g: 0, fiber_g: 6.7, sugars_g: 0.6, fat_g: 14.7, saturated_fat_g: 2.1, salt_g: 7, kcal: 100 },
                 
               },
               {
@@ -758,7 +767,7 @@ export default function App() {
                 
                 
                 
-                nutrients_per_100: { protein_g: 0.7, fiber_g: 2, sugar_g: 4.9, fat_g: 0.3, saturated_fat_g: 0, salt_g: 1, kcal: 100 },
+                nutrients_per_100: { protein_g: 0.7, carbs_g: 0, fiber_g: 2, sugars_g: 4.9, fat_g: 0.3, saturated_fat_g: 0, salt_g: 1, kcal: 100 },
                 
               },
               {
@@ -773,22 +782,22 @@ export default function App() {
                 
                 
                 
-                nutrients_per_100: { protein_g: 10, fiber_g: 0, sugar_g: 3.5, fat_g: 1.5, saturated_fat_g: 0.9, salt_g: 80, kcal: 100 },
+                nutrients_per_100: { protein_g: 10, carbs_g: 0, fiber_g: 0, sugars_g: 3.5, fat_g: 1.5, saturated_fat_g: 0.9, salt_g: 80, kcal: 100 },
                 
               },
               {
                 id: "5000159461122", // Snickers
                 name: "Snickers Bar",
-                category: "Grocery",
+                category: "Snacks",
                 subCategory: "Candy chocolate bars",
                 health_score: 10,
-                nutri_grade: 'A', swap_suggestion_id: null,
+                nutri_grade: 'E', swap_suggestion_id: "f121",
                 
                 
                 
                 
                 
-                nutrients_per_100: { protein_g: 6.3, fiber_g: 0, sugar_g: 56.3, fat_g: 30.9, saturated_fat_g: 10.6, salt_g: 42.8, kcal: 100 },
+                nutrients_per_100: { protein_g: 6.3, carbs_g: 0, fiber_g: 0, sugars_g: 56.3, fat_g: 30.9, saturated_fat_g: 10.6, salt_g: 42.8, kcal: 100 },
                 
               }
             ];
@@ -996,7 +1005,7 @@ export default function App() {
 
               for (let i = 0; i < totalItems; i++) {
                 const item = result.items[i];
-                setScanStatus(`Fetching Open Food Facts scores for "${item.cleanName}"...`);
+                setScanStatus(`Fetching Swiss Food DB scores for "${item.cleanName}"...`);
                 setScanProgress({ current: i + 1, total: totalItems });
 
                 try {
@@ -1033,7 +1042,7 @@ export default function App() {
                     
                     
                     
-                    nutrients_per_100: { protein_g: 2, fiber_g: 1, sugar_g: 2, fat_g: 4, saturated_fat_g: 0.5, salt_g: 100, kcal: 100 },
+                    nutrients_per_100: { protein_g: 2, carbs_g: 0, fiber_g: 1, sugars_g: 2, fat_g: 4, saturated_fat_g: 0.5, salt_g: 100, kcal: 100 },
                     
                   };
                   fetchedFoods.push(fallback);
@@ -1094,11 +1103,11 @@ export default function App() {
     const subLower = (food.subCategory || "Grocery").toLowerCase();
     
     if (preference === "High Protein") {
-      return food.nutrients_per_100.protein >= 8; 
+      return food.nutrients_per_100.protein_g >= 8; 
     }
     
     if (preference === "Low Carb") {
-      return food.nutrients_per_100.sugar_g <= 15;
+      return food.nutrients_per_100.sugars_g <= 15;
     }
     
     if (preference === "Vegetarian") {
@@ -1132,7 +1141,7 @@ export default function App() {
       fromFood: currentFood,
       toFood: swapFood,
       reason: language === 'en' ? 'Better nutritional profile' : 'Besseres Nährwertprofil',
-      scoreDiff: swapFood.health_score - currentFood.health_score
+      scoreDiff: Math.round(swapFood.health_score - currentFood.health_score)
     }];
   };
 
@@ -1291,16 +1300,53 @@ export default function App() {
         }
       }
       
-      searchMatches = nameMatch || origNameMatch || synonymMatch;
+      const translatedCat = translateCategoryName(food.category, language);
+      const catMatch = normalizeText(food.category).includes(q) || 
+                       normalizeText(translatedCat).includes(q) || 
+                       (food.subCategory && normalizeText(food.subCategory).includes(q));
+      
+      // Specifically map "Dairy" to "Dairy & Eggs"
+      let customCatMatch = false;
+      if (q.includes("dairy") || q.includes("milch")) {
+         customCatMatch = food.category === "Dairy & Eggs";
+      }
+
+      searchMatches = nameMatch || origNameMatch || synonymMatch || catMatch || customCatMatch;
     }
     
     const preferenceMatches = matchesDietaryPreference(food, userProfile.dietaryPreference);
-    return categoryMatches && searchMatches && preferenceMatches;
+    
+    // Advanced Filters (only in search tab)
+    let advancedMatches = true;
+    if (activeTab === "search") {
+      if (searchCategory !== "All" && food.category !== searchCategory) {
+        advancedMatches = false;
+      }
+      if (searchSubCategory !== "All" && food.subCategory !== searchSubCategory) {
+        advancedMatches = false;
+      }
+      if (searchNutriScores.length > 0 && !searchNutriScores.includes((food.nutri_grade || 'A').toUpperCase())) {
+        advancedMatches = false;
+      }
+      if (searchNovaScores.length > 0 && (!food.nova_group || !searchNovaScores.includes(food.nova_group))) {
+        advancedMatches = false;
+      }
+      if (searchFavoritesOnly && !favoriteFoodIds.includes(food.id)) {
+        advancedMatches = false;
+      }
+      if (searchMaxCalories < 1000 && food.nutrients_per_100 && (food.nutrients_per_100.kcal || 0) > searchMaxCalories) {
+        advancedMatches = false;
+      }
+    }
+    
+    return categoryMatches && searchMatches && preferenceMatches && advancedMatches;
   });
 
   const popularSearches = language === 'en'
-    ? ["Avocado", "Yogurt", "Oats", "Spinach", "Blueberries", "Apples"]
-    : ["Avocado", "Joghurt", "Haferflocken", "Spinat", "Blaubeeren", "Äpfel"];
+    ? ["Dairy", "Produce", "Snacks", "Beverages", "Pantry"]
+    : ["Milchprodukte", "Frischeprodukte", "Snacks", "Getränke", "Vorratskammer"];
+    
+  const availableSubCategories = Array.from(new Set(allFoods.map(f => f.subCategory).filter(Boolean))) as string[];
 
   const handleQuickSearch = (term: string) => {
     triggerHaptic();
@@ -1393,7 +1439,7 @@ export default function App() {
                   />
                 </div>
                 <p className="text-[11px] text-neutral-400 font-medium">
-                  Connecting to Open Food Facts database...
+                  Connecting to Swiss Food Composition Database...
                 </p>
               </div>
             )}
@@ -1488,12 +1534,12 @@ export default function App() {
               {/* Spotlight Banner Card */}
               <div 
                 onClick={() => handleOpenFood(spotlightFood.id)}
-                className="bg-white rounded-[1.25rem] border border-[#E5EAE3] p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] cursor-pointer active:scale-[0.98] transition-transform"
+                className="bg-white dark:bg-neutral-900 rounded-[1.25rem] border border-[#E5EAE3] dark:border-neutral-800 p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] cursor-pointer active:scale-[0.98] transition-transform"
               >
                 <div className="flex justify-between items-start">
                   <div className="space-y-1 text-left">
                     <p className="text-[10px] font-bold text-[#519D46] tracking-wider uppercase">{t("spotlight")}</p>
-                    <h3 className="text-[22px] font-bold text-neutral-900 leading-tight">
+                    <h3 className="text-[22px] font-bold text-neutral-900 dark:text-neutral-100 leading-tight">
                       {spotlightFood.name}
                     </h3>
                     
@@ -1505,20 +1551,25 @@ export default function App() {
 
                 
 
-                <div className="bg-[#F7FBF6] rounded-xl flex items-center justify-between p-4 mt-4">
+                <div className="bg-[#F7FBF6] dark:bg-neutral-800 rounded-xl flex items-center justify-between p-4 mt-4">
                   <div className="text-center flex-1">
-                    <p className="text-sm font-bold text-neutral-900">{spotlightFood.nutrients_per_100.kcal}</p>
+                    <p className="text-sm font-bold text-neutral-900 dark:text-neutral-100">{Math.round(spotlightFood.nutrients_per_100.kcal)} kcal / 100g</p>
                     <p className="text-[10px] text-neutral-400 mt-0.5">{t("calories")}</p>
                   </div>
-                  <div className="w-px h-8 bg-[#E5EAE3]" />
+                  <div className="w-px h-8 bg-[#E5EAE3] dark:bg-neutral-700" />
                   <div className="text-center flex-1">
-                    <p className="text-sm font-bold text-neutral-900">{spotlightFood.nutrients_per_100.protein_g}g</p>
+                    <p className="text-sm font-bold text-neutral-900 dark:text-neutral-100">{spotlightFood.nutrients_per_100.protein_g}g</p>
                     <p className="text-[10px] text-neutral-400 mt-0.5">{t("protein")}</p>
                   </div>
-                  <div className="w-px h-8 bg-[#E5EAE3]" />
+                  <div className="w-px h-8 bg-[#E5EAE3] dark:bg-neutral-700" />
                   <div className="text-center flex-1">
-                    <p className="text-sm font-bold text-neutral-900">{spotlightFood.nutrients_per_100.fiber_g}g</p>
-                    <p className="text-[10px] text-neutral-400 mt-0.5">{t("fiber")}</p>
+                    <p className="text-sm font-bold text-neutral-900 dark:text-neutral-100">{spotlightFood.nutrients_per_100.carbs_g}g</p>
+                    <p className="text-[10px] text-neutral-400 mt-0.5">{language === 'en' ? 'Carbs' : 'Kohlenh.'}</p>
+                  </div>
+                  <div className="w-px h-8 bg-[#E5EAE3] dark:bg-neutral-700" />
+                  <div className="text-center flex-1">
+                    <p className="text-sm font-bold text-neutral-900 dark:text-neutral-100">{spotlightFood.nutrients_per_100.fat_g}g</p>
+                    <p className="text-[10px] text-neutral-400 mt-0.5">{language === 'en' ? 'Fat' : 'Fett'}</p>
                   </div>
                   
                 </div>
@@ -1548,7 +1599,7 @@ export default function App() {
                             <ScoreRing score={food.health_score} size={64} strokeWidth={5} />
                             <div className="text-center w-full">
                               <h4 className="text-sm font-bold text-neutral-900 dark:text-neutral-100 truncate w-full">{food.name}</h4>
-                              <p className="text-[10px] text-neutral-400 dark:text-neutral-500 mt-0.5">{food.nutrients_per_100.kcal} kcal</p>
+                              <p className="text-[10px] text-neutral-400 dark:text-neutral-500 mt-0.5">{Math.round(food.nutrients_per_100.kcal)} kcal / 100g</p>
                             </div>
                             
                             {/* Heart indicator in corner */}
@@ -1576,7 +1627,7 @@ export default function App() {
                           const fromFood = allFoods.find(f => f.id === fromId);
                           const toFood = allFoods.find(f => f.id === toId);
                           if (!fromFood || !toFood) return null;
-                          const scoreDiff = toFood.health_score - fromFood.health_score;
+                          const scoreDiff = Math.round(toFood.health_score - fromFood.health_score);
 
                           return (
                             <div 
@@ -1619,22 +1670,32 @@ export default function App() {
                   <h3 className="text-[20px] font-bold text-neutral-900 tracking-tight">
                     {t("recommended")}
                   </h3>
-                  <span className="text-xs font-semibold text-[#519D46] bg-[#EAF3EB] px-2.5 py-1 rounded-full">
-                    {userProfile.dietaryPreference === 'None' ? (language === 'en' ? 'Balanced' : 'Ausgewogen') : (language === 'en' ? userProfile.dietaryPreference : userProfile.dietaryPreference === 'High Protein' ? 'Viel Eiweiß' : userProfile.dietaryPreference === 'Low Carb' ? 'Wenig Kohlenhydrate' : userProfile.dietaryPreference === 'Vegetarian' ? 'Vegetarisch' : userProfile.dietaryPreference === 'Vegan' ? 'Vegan' : userProfile.dietaryPreference)}
-                  </span>
+                  <div className="relative inline-flex items-center">
+                    <select 
+                      value={userProfile.dietaryPreference}
+                      onChange={(e) => setUserProfile(p => ({ ...p, dietaryPreference: e.target.value }))}
+                      className="text-xs font-semibold text-[#519D46] dark:text-emerald-400 bg-[#EAF3EB] dark:bg-emerald-900/30 px-3 py-1 rounded-full cursor-pointer hover:bg-[#DCEFDE] dark:hover:bg-emerald-800/40 transition-colors appearance-none outline-none"
+                    >
+                      <option value="None">{language === 'en' ? 'Balanced' : 'Ausgewogen'}</option>
+                      <option value="High Protein">{language === 'en' ? 'High Protein' : 'Viel Eiweiß'}</option>
+                      <option value="Low Carb">{language === 'en' ? 'Low Carb' : 'Wenig Kohlenhydrate'}</option>
+                      <option value="Vegetarian">{language === 'en' ? 'Vegetarian' : 'Vegetarisch'}</option>
+                      <option value="Vegan">{language === 'en' ? 'Vegan' : 'Vegan'}</option>
+                    </select>
+                  </div>
                 </div>
                 
                 <div className="flex gap-4 overflow-x-auto no-scrollbar pb-4 -mx-5 px-5">
-                  {foodsMatchingPreference.filter(f => f.health_score > 75).map((food) => (
+                  {foodsMatchingPreference.filter(f => f.health_score > 75).slice(0, 20).map((food) => (
                     <div 
                       key={food.id}
                       onClick={() => handleOpenFood(food.id)}
-                      className="w-[140px] shrink-0 bg-white rounded-[1.25rem] border border-[#E5EAE3] p-4 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col items-center gap-3 cursor-pointer active:scale-[0.98] transition-transform"
+                      className="w-[140px] shrink-0 bg-white dark:bg-neutral-900 rounded-[1.25rem] border border-[#E5EAE3] dark:border-neutral-800 p-4 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col items-center gap-3 cursor-pointer active:scale-[0.98] transition-transform"
                     >
                       <ScoreRing score={food.health_score} size={64} strokeWidth={5} />
                       <div className="text-center w-full">
                         <h4 className="text-sm font-bold text-neutral-900 truncate w-full">{food.name}</h4>
-                        <p className="text-[10px] text-neutral-400 mt-0.5">{food.nutrients_per_100.kcal} kcal</p>
+                        <p className="text-[10px] text-neutral-400 mt-0.5">{Math.round(food.nutrients_per_100.kcal)} kcal / 100g</p>
                       </div>
                     </div>
                   ))}
@@ -1652,7 +1713,7 @@ export default function App() {
               <div className="flex items-center gap-3.5">
                 <button 
                   onClick={() => handleTabChange("home")}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-[#E5EAE3] text-neutral-900 shadow-sm active:scale-95 transition-transform"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-neutral-800 border border-[#E5EAE3] dark:border-neutral-700 text-neutral-900 dark:text-neutral-100 shadow-sm active:scale-95 transition-transform"
                 >
                   <ArrowLeft className="w-5 h-5" />
                 </button>
@@ -1667,7 +1728,7 @@ export default function App() {
               </div>
 
               {/* Language Selector at the top of profile */}
-              <div className="bg-white border border-[#E5EAE3] rounded-[24px] p-5 shadow-sm text-left">
+              <div className="bg-white dark:bg-neutral-900 border border-[#E5EAE3] dark:border-neutral-800 rounded-[24px] p-5 shadow-sm text-left">
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className="font-bold text-neutral-900 text-base">Language / Sprache</h3>
@@ -1719,7 +1780,7 @@ export default function App() {
                   <Eye className="w-5 h-5 text-[#519D46]" />
                   <h2 className="text-[22px] font-bold text-neutral-900 tracking-tight">{t("appearance")}</h2>
                 </div>
-                <div className="bg-white border border-[#E5EAE3] rounded-[24px] p-5 shadow-sm text-left">
+                <div className="bg-white dark:bg-neutral-900 border border-[#E5EAE3] dark:border-neutral-800 rounded-[24px] p-5 shadow-sm text-left">
                   <p className="text-[15px] text-neutral-500 font-medium mb-4">{t("colorScheme")}</p>
                   <div className="grid grid-cols-3 gap-3">
                     {['Light', 'Auto', 'Dark'].map(scheme => (
@@ -1748,7 +1809,7 @@ export default function App() {
                   <User className="w-5 h-5 text-[#519D46]" />
                   <h2 className="text-[22px] font-bold text-neutral-900 tracking-tight">{t("personalInfo")}</h2>
                 </div>
-                <div className="bg-white border border-[#E5EAE3] rounded-[24px] p-5 shadow-sm space-y-6 text-left">
+                <div className="bg-white dark:bg-neutral-900 border border-[#E5EAE3] dark:border-neutral-800 rounded-[24px] p-5 shadow-sm space-y-6 text-left">
                   <div>
                     <p className="text-[15px] text-neutral-500 font-medium mb-3">{t("sex")}</p>
                     <div className="grid grid-cols-2 gap-3">
@@ -1848,7 +1909,7 @@ export default function App() {
                   <Flame className="w-5 h-5 text-[#519D46]" />
                   <h2 className="text-[22px] font-bold text-neutral-900 tracking-tight">{t("dietaryPreference")}</h2>
                 </div>
-                <div className="bg-white border border-[#E5EAE3] rounded-[24px] p-5 shadow-sm space-y-3.5">
+                <div className="bg-white dark:bg-neutral-900 border border-[#E5EAE3] dark:border-neutral-800 rounded-[24px] p-5 shadow-sm space-y-3.5">
                   <p className="text-xs text-neutral-400 font-medium leading-relaxed text-left">
                     {language === "en" ? "Customises your recommendations, smart swaps, and search filters." : "Personalisiert Ihre Empfehlungen, Smart Swaps und Suchfilter."}
                   </p>
@@ -1887,30 +1948,154 @@ export default function App() {
                 </p>
               </div>
 
-              {/* iOS Style Search Box */}
-              <div className="relative">
-                <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-neutral-400">
-                  <Search className="w-5 h-5" />
+              {/* iOS Style Search Box with Filter Toggle */}
+              <div className="flex items-center gap-2">
+                <div className="relative flex-1">
+                  <div className="absolute inset-y-0 left-3.5 flex items-center pointer-events-none text-neutral-400">
+                    <Search className="w-5 h-5" />
+                  </div>
+                  <input
+                    type="text"
+                    placeholder={t("searchPlaceholder")}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-11 pr-10 py-3 bg-[#EEF2ED] dark:bg-neutral-800 border-0 rounded-2xl text-[15px] font-medium text-neutral-800 dark:text-neutral-100 placeholder-neutral-400 focus:ring-2 focus:ring-emerald-500/30 focus:bg-white dark:focus:bg-neutral-900 transition-all outline-none"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => {
+                        triggerHaptic();
+                        setSearchQuery("");
+                      }}
+                      className="absolute inset-y-0 right-3.5 flex items-center text-neutral-400 hover:text-neutral-600"
+                    >
+                      <X className="w-5 h-5 bg-neutral-200 hover:bg-neutral-300 rounded-full p-0.5" />
+                    </button>
+                  )}
                 </div>
-                <input
-                  type="text"
-                  placeholder={t("searchPlaceholder")}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-11 pr-10 py-3 bg-[#EEF2ED] border-0 rounded-2xl text-[15px] font-medium text-neutral-800 placeholder-neutral-400 focus:ring-2 focus:ring-emerald-500/30 focus:bg-white transition-all outline-none"
-                />
-                {searchQuery && (
-                  <button
-                    onClick={() => {
-                      triggerHaptic();
-                      setSearchQuery("");
-                    }}
-                    className="absolute inset-y-0 right-3.5 flex items-center text-neutral-400 hover:text-neutral-600"
-                  >
-                    <X className="w-5 h-5 bg-neutral-200 hover:bg-neutral-300 rounded-full p-0.5" />
-                  </button>
-                )}
+                <button 
+                  onClick={() => { triggerHaptic(); setShowAdvancedFilters(!showAdvancedFilters); }}
+                  className={`p-3 rounded-2xl flex-shrink-0 transition-colors ${showAdvancedFilters ? 'bg-emerald-500 text-white' : 'bg-[#EEF2ED] dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-[#E5EAE3] dark:hover:bg-neutral-700'}`}
+                >
+                  <SlidersHorizontal className="w-5 h-5" />
+                </button>
               </div>
+              
+              {/* Advanced Filters Panel */}
+              {showAdvancedFilters && (
+                <div className="bg-white dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 rounded-2xl p-4 shadow-sm space-y-5 animate-in slide-in-from-top-2 duration-200">
+                  {/* Favorites Only Toggle */}
+                  <div className="flex items-center justify-between pt-2 border-t border-neutral-100 dark:border-neutral-800">
+                    <label className="text-sm font-semibold text-neutral-800 dark:text-neutral-200">{language === 'en' ? 'Favorites Only' : 'Nur Favoriten'}</label>
+                    <button
+                      onClick={() => setSearchFavoritesOnly(!searchFavoritesOnly)}
+                      className={`w-11 h-6 rounded-full transition-colors relative ${searchFavoritesOnly ? 'bg-emerald-500' : 'bg-neutral-200 dark:bg-neutral-700'}`}
+                    >
+                      <div className={`absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform ${searchFavoritesOnly ? 'translate-x-5' : 'translate-x-0'}`} />
+                    </button>
+                  </div>
+
+                  
+                  {/* Category & SubCategory */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-neutral-500 uppercase tracking-wider">{language === 'en' ? 'Category' : 'Kategorie'}</label>
+                      <select 
+                        value={searchCategory} 
+                        onChange={(e) => { setSearchCategory(e.target.value); setSearchSubCategory("All"); }}
+                        className="w-full bg-[#EEF2ED] dark:bg-neutral-800 dark:text-neutral-200 border-none rounded-xl text-sm py-2 px-3 focus:ring-2 focus:ring-emerald-500/30"
+                      >
+                        {CATEGORIES.map(cat => (
+                          <option key={cat} value={cat}>{translateCategoryName(cat, language)}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-neutral-500 uppercase tracking-wider">{language === 'en' ? 'Subcategory' : 'Unterkategorie'}</label>
+                      <select 
+                        value={searchSubCategory} 
+                        onChange={(e) => setSearchSubCategory(e.target.value)}
+                        className="w-full bg-[#EEF2ED] dark:bg-neutral-800 dark:text-neutral-200 border-none rounded-xl text-sm py-2 px-3 focus:ring-2 focus:ring-emerald-500/30"
+                      >
+                        <option value="All">{language === 'en' ? 'All' : 'Alle'}</option>
+                        {availableSubCategories.filter(sc => searchCategory === 'All' || allFoods.find(f => f.subCategory === sc && f.category === searchCategory)).map(sc => (
+                          <option key={sc} value={sc}>{sc}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Nutri Score & NOVA */}
+                  <div className="space-y-3">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-neutral-500 uppercase tracking-wider">Nutri Score</label>
+                      <div className="flex gap-2">
+                        {['A', 'B', 'C', 'D', 'E'].map(score => {
+                          const isSelected = searchNutriScores.includes(score);
+                          return (
+                            <button
+                              key={score}
+                              onClick={() => {
+                                triggerHaptic();
+                                setSearchNutriScores(prev => isSelected ? prev.filter(s => s !== score) : [...prev, score]);
+                              }}
+                              className={`w-8 h-8 rounded-full text-sm font-bold flex items-center justify-center transition-all ${isSelected ? 'bg-neutral-800 text-white ring-2 ring-neutral-800 ring-offset-1' : 'bg-neutral-100 text-neutral-400 hover:bg-neutral-200'}`}
+                            >
+                              {score}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-neutral-500 uppercase tracking-wider">NOVA-Score</label>
+                      <div className="flex gap-2">
+                        {[1, 2, 3, 4].map(score => {
+                          const isSelected = searchNovaScores.includes(score);
+                          return (
+                            <button
+                              key={score}
+                              onClick={() => {
+                                triggerHaptic();
+                                setSearchNovaScores(prev => isSelected ? prev.filter(s => s !== score) : [...prev, score]);
+                              }}
+                              className={`w-8 h-8 rounded-full text-sm font-bold flex items-center justify-center transition-all ${isSelected ? 'bg-neutral-800 text-white ring-2 ring-neutral-800 ring-offset-1' : 'bg-neutral-100 text-neutral-400 hover:bg-neutral-200'}`}
+                            >
+                              {score}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Calories Slider */}
+                  <div className="space-y-2 pb-2">
+                    <div className="flex items-center justify-between">
+                      <label className="text-xs font-bold text-neutral-500 uppercase tracking-wider">
+                        {language === 'en' ? 'Max Calories' : 'Max Kalorien'} <span className="text-[10px] lowercase font-medium">(/ 100g)</span>
+                      </label>
+                      <span className="text-sm font-bold text-emerald-600">{searchMaxCalories} kcal</span>
+                    </div>
+                    <input 
+                      type="range" 
+                      min="0" 
+                      max="1000" 
+                      step="10"
+                      value={searchMaxCalories}
+                      onChange={(e) => setSearchMaxCalories(parseInt(e.target.value))}
+                      className="w-full h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                    />
+                    <div className="flex justify-between text-[10px] text-neutral-400 px-1">
+                      <span>0</span>
+                      <span>500</span>
+                      <span>1000+</span>
+                    </div>
+                  </div>
+                  
+                </div>
+              )}
 
               {/* Quick Search Chips */}
               <div className="space-y-2">
@@ -1922,7 +2107,7 @@ export default function App() {
                     <button
                       key={chip}
                       onClick={() => handleQuickSearch(chip)}
-                      className="px-3.5 py-1.5 bg-white border border-[#E5EAE3] hover:border-neutral-300 rounded-full text-xs font-semibold text-neutral-600 transition-all cursor-pointer active:scale-95"
+                      className="px-3.5 py-1.5 bg-white dark:bg-neutral-900 border border-[#E5EAE3] dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 rounded-full text-neutral-600 dark:text-neutral-400 text-xs font-semibold text-neutral-600 transition-all cursor-pointer active:scale-95"
                     >
                       {chip}
                     </button>
@@ -1953,28 +2138,28 @@ export default function App() {
                         }}
                         className="bg-white dark:bg-neutral-900 rounded-xl border border-[#E5EAE3] dark:border-neutral-800 p-3 flex items-center justify-between hover:shadow-sm cursor-pointer transition-all animate-slide-up group"
                       >
-                        <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg ${colors.bg} ${colors.text}`}>
+                        <div className="flex items-center gap-3 min-w-0 flex-1 pr-2">
+                          <div className={`p-2 rounded-lg ${colors.bg} ${colors.text} flex-shrink-0`}>
                             <Apple className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                           </div>
-                          <div>
-                            <h4 className="font-semibold text-neutral-800 dark:text-neutral-100 text-[15px]">
+                          <div className="min-w-0">
+                            <h4 className="font-semibold text-neutral-800 dark:text-neutral-100 text-[15px] truncate">
                               {food.name}
                             </h4>
-                            <div className="flex items-center gap-1.5 mt-0.5">
-                              <span className="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium">
+                            <div className="flex items-center gap-1.5 mt-0.5 flex-wrap">
+                              <span className="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium truncate max-w-[80px] sm:max-w-none">
                                 {(food.subCategory || "Grocery")}
                               </span>
-                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide ${nova.color}`}>
+                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide whitespace-nowrap ${nova.color}`}>
                                 {nova.label}
                               </span>
                             </div>
                           </div>
                         </div>
 
-                        <div className="flex items-center gap-3">
-                          <span className="text-xs font-semibold text-neutral-400 dark:text-neutral-550">
-                            {food.nutrients_per_100.kcal} kcal
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                          <span className="text-xs font-semibold text-neutral-400 dark:text-neutral-550 whitespace-nowrap hidden min-[400px]:inline-block">
+                            {Math.round(food.nutrients_per_100.kcal)} kcal <span className="hidden sm:inline">/ 100g</span>
                           </span>
                           <button
                             onClick={(e) => toggleFavoriteFood(food.id, e)}
@@ -1996,7 +2181,7 @@ export default function App() {
                   })}
 
                   {filteredFoods.length === 0 && (
-                    <div className="bg-white rounded-xl border border-[#E5EAE3] p-10 text-center space-y-3">
+                    <div className="bg-white dark:bg-neutral-900 rounded-xl border border-[#E5EAE3] dark:border-neutral-800 p-10 text-center space-y-3">
                       <div className="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center mx-auto text-rose-500">
                         <Info className="w-5 h-5" />
                       </div>
@@ -2032,22 +2217,44 @@ export default function App() {
                   <h3 className="text-[20px] font-bold text-neutral-900 tracking-tight">
                     Recommended for You
                   </h3>
-                  <span className="text-xs font-semibold text-[#2F7E41] bg-[#EAF3EB] border border-[#CDE5CE] px-2.5 py-1 rounded-full flex items-center gap-1">
-                    <Settings2 className="w-3 h-3" />
-                    {userProfile.dietaryPreference === 'None' ? 'Balanced' : userProfile.dietaryPreference}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={() => setSwapsFavoritesOnly(!swapsFavoritesOnly)}
+                      className={`p-1.5 rounded-full flex items-center justify-center cursor-pointer transition-colors ${swapsFavoritesOnly ? 'bg-rose-500 border border-rose-500' : 'text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-700'}`}
+                      title={language === 'en' ? 'Favorites' : 'Favoriten'}
+                    >
+                      <Heart className={`w-3.5 h-3.5 ${swapsFavoritesOnly ? 'fill-white text-white' : ''}`} />
+                    </button>
+                    <div className="relative inline-flex items-center">
+                      <Settings2 className="w-3 h-3 absolute left-2.5 text-[#2F7E41] dark:text-emerald-400 pointer-events-none" />
+                      <select 
+                        value={userProfile.dietaryPreference}
+                        onChange={(e) => setUserProfile(p => ({ ...p, dietaryPreference: e.target.value }))}
+                        className="text-xs font-semibold text-[#2F7E41] dark:text-emerald-400 bg-[#EAF3EB] dark:bg-emerald-900/30 border border-[#CDE5CE] dark:border-emerald-800 rounded-full cursor-pointer hover:bg-[#DCEFDE] dark:hover:bg-emerald-800/40 transition-colors appearance-none pl-6 pr-3 py-1 outline-none"
+                      >
+                        <option value="None">{language === 'en' ? 'Balanced' : 'Ausgewogen'}</option>
+                        <option value="High Protein">{language === 'en' ? 'High Protein' : 'Viel Eiweiß'}</option>
+                        <option value="Low Carb">{language === 'en' ? 'Low Carb' : 'Wenig Kohlenhydrate'}</option>
+                        <option value="Vegetarian">{language === 'en' ? 'Vegetarian' : 'Vegetarisch'}</option>
+                        <option value="Vegan">{language === 'en' ? 'Vegan' : 'Vegan'}</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="space-y-3">
-                  {recommendedSwaps.map((swap, index) => {
+                  {recommendedSwaps.filter(swap => {
                     const fromFood = allFoods.find(f => f.id === swap.fromId);
                     const toFood = allFoods.find(f => f.id === swap.toId);
-                    if (!fromFood || !toFood) return null;
-
-                    // Filter out proposed swap if it doesn't match current dietary preferences
-                    if (!matchesDietaryPreference(toFood, userProfile.dietaryPreference)) return null;
-
-                    const scoreDiff = toFood.health_score - fromFood.health_score;
+                    if (!fromFood || !toFood) return false;
+                    if (swapsFavoritesOnly && !favoriteSwapIds.includes(`${swap.fromId}::${swap.toId}`) && !favoriteFoodIds.includes(swap.fromId) && !favoriteFoodIds.includes(swap.toId)) return false;
+                    if (!matchesDietaryPreference(toFood, userProfile.dietaryPreference)) return false;
+                    return true;
+                  }).slice(0, 20).map((swap, index) => {
+                    const fromFood = allFoods.find(f => f.id === swap.fromId)!;
+                    const toFood = allFoods.find(f => f.id === swap.toId)!;
+                    
+                    const scoreDiff = Math.round(toFood.health_score - fromFood.health_score);
                     const isExpanded = expandedSwapId === swap.fromId;
 
                     return (
@@ -2070,7 +2277,7 @@ export default function App() {
                                   <span className="text-[17px] font-bold text-amber-500 dark:text-amber-400">{fromFood.health_score}</span>
                                   <span className="text-[15px] font-medium text-neutral-900 dark:text-neutral-100 leading-tight">{fromFood.name}</span>
                                </div>
-                               <div className="text-[11px] text-neutral-400 dark:text-neutral-550 mt-0.5">/100 {fromFood.calories} kcal</div>
+                               <div className="text-[11px] text-neutral-400 dark:text-neutral-550 mt-0.5">{Math.round(fromFood.nutrients_per_100?.kcal || 0)} kcal / 100g</div>
                             </div>
 
                             {/* Arrow */}
@@ -2084,7 +2291,7 @@ export default function App() {
                                   <span className="text-[17px] font-bold text-[#519D46] dark:text-emerald-400">{toFood.health_score}</span>
                                   <span className="text-[15px] font-medium text-neutral-900 dark:text-neutral-100 leading-tight">{toFood.name}</span>
                                </div>
-                               <div className="text-[11px] text-neutral-400 dark:text-neutral-550 mt-0.5">/100 {toFood.calories} kcal</div>
+                               <div className="text-[11px] text-neutral-400 dark:text-neutral-550 mt-0.5">{Math.round(toFood.nutrients_per_100?.kcal || 0)} kcal / 100g</div>
                             </div>
                             
                             {/* Chevron */}
@@ -2136,25 +2343,25 @@ export default function App() {
                               <div className="flex justify-between text-xs font-semibold text-neutral-700 dark:text-neutral-300">
                                 <span className="text-neutral-500 dark:text-neutral-400">{language === 'en' ? 'Calories' : 'Kalorien'}</span>
                                 <div className="flex gap-4">
-                                  <span className={isBetterNutrient("calories", fromFood.calories, toFood.calories) ? "text-neutral-400 dark:text-neutral-500 font-normal" : "text-amber-600 dark:text-amber-400 font-bold"}>
-                                    {fromFood.calories}
+                                  <span className={isBetterNutrient("kcal", fromFood.nutrients_per_100?.kcal || 0, toFood.nutrients_per_100?.kcal || 0) ? "text-neutral-400 dark:text-neutral-500 font-normal" : "text-amber-600 dark:text-amber-400 font-bold"}>
+                                    {Math.round(fromFood.nutrients_per_100?.kcal || 0)}
                                   </span>
-                                  <span className={isBetterNutrient("calories", fromFood.calories, toFood.calories) ? "text-emerald-700 dark:text-emerald-400 font-bold" : "text-neutral-400 dark:text-neutral-500 font-normal"}>
-                                    {toFood.calories}
+                                  <span className={isBetterNutrient("kcal", fromFood.nutrients_per_100?.kcal || 0, toFood.nutrients_per_100?.kcal || 0) ? "text-emerald-700 dark:text-emerald-400 font-bold" : "text-neutral-400 dark:text-neutral-500 font-normal"}>
+                                    {Math.round(toFood.nutrients_per_100?.kcal || 0)}
                                   </span>
                                 </div>
                               </div>
                               <div className="grid grid-cols-2 gap-3">
                                 <div className="h-2 bg-neutral-200/75 dark:bg-neutral-800 rounded-full overflow-hidden">
                                   <div
-                                    className={`h-full ${!isBetterNutrient("calories", fromFood.calories, toFood.calories) ? "bg-amber-500" : "bg-neutral-300 dark:bg-neutral-700"}`}
-                                    style={{ width: `${Math.min(100, (fromFood.calories / 300) * 100)}%` }}
+                                    className={`h-full ${!isBetterNutrient("kcal", fromFood.nutrients_per_100?.kcal || 0, toFood.nutrients_per_100?.kcal || 0) ? "bg-amber-500" : "bg-neutral-300 dark:bg-neutral-700"}`}
+                                    style={{ width: `${Math.min(100, ((fromFood.nutrients_per_100?.kcal || 0) / 300) * 100)}%` }}
                                   />
                                 </div>
                                 <div className="h-2 bg-neutral-200/75 dark:bg-neutral-800 rounded-full overflow-hidden">
                                   <div
-                                    className={`h-full ${isBetterNutrient("calories", fromFood.calories, toFood.calories) ? "bg-emerald-500" : "bg-neutral-300 dark:bg-neutral-700"}`}
-                                    style={{ width: `${Math.min(100, (toFood.calories / 300) * 100)}%` }}
+                                    className={`h-full ${isBetterNutrient("kcal", fromFood.nutrients_per_100?.kcal || 0, toFood.nutrients_per_100?.kcal || 0) ? "bg-emerald-500" : "bg-neutral-300 dark:bg-neutral-700"}`}
+                                    style={{ width: `${Math.min(100, ((toFood.nutrients_per_100?.kcal || 0) / 300) * 100)}%` }}
                                   />
                                 </div>
                               </div>
@@ -2236,7 +2443,7 @@ export default function App() {
               </div>
               
               {/* Health Points Card */}
-              <div className="bg-white rounded-[1.25rem] border border-[#E5EAE3] py-8 px-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col items-center gap-4">
+              <div className="bg-white dark:bg-neutral-900 rounded-[1.25rem] border border-[#E5EAE3] dark:border-neutral-800 py-8 px-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] flex flex-col items-center gap-4">
                 <div className="relative w-[120px] h-[120px]">
                   <svg className="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="42" fill="none" stroke="#EAECE9" strokeWidth="10" />
@@ -2504,7 +2711,7 @@ export default function App() {
                 <button
                   onClick={() => fileInputLibRef.current?.click()}
                   disabled={isScanning}
-                  className="w-full bg-white border-2 border-[#E5EAE3] hover:border-[#519D46] hover:text-[#519D46] transition-colors text-neutral-700 py-4 rounded-[1.25rem] font-bold text-base flex items-center justify-center gap-3 shadow-sm disabled:opacity-50"
+                  className="w-full bg-white dark:bg-neutral-900 border-2 border-[#E5EAE3] dark:border-neutral-800 dark:text-neutral-200 hover:border-[#519D46] hover:text-[#519D46] transition-colors text-neutral-700 py-4 rounded-[1.25rem] font-bold text-base flex items-center justify-center gap-3 shadow-sm disabled:opacity-50"
                 >
                   <FileImage className="w-5 h-5 text-neutral-400" />
                   Choose from Library
@@ -2718,8 +2925,8 @@ export default function App() {
                       per 100g
                     </p>
                     <div className="flex items-baseline gap-1 pt-1">
-                      <span className="text-2xl font-bold text-[#519D46] dark:text-emerald-400">{currentFoodDetail.nutrients_per_100.kcal}</span>
-                      <span className="text-sm font-medium text-neutral-400 dark:text-neutral-500">kcal</span>
+                      <span className="text-2xl font-bold text-[#519D46] dark:text-emerald-400">{Math.round(currentFoodDetail.nutrients_per_100.kcal)}</span>
+                      <span className="text-sm font-medium text-neutral-400 dark:text-neutral-500">kcal / 100g</span>
                     </div>
                   </div>
                   <div className="flex-shrink-0 -mt-2">
@@ -2798,7 +3005,7 @@ export default function App() {
                         {language === 'en' ? 'Per 100g (% of Daily Value)' : 'Pro 100g (% des Tagesbedarfs)'}
                       </p>
                       <p className="text-[10px] text-[#519D46] dark:text-emerald-400 font-medium bg-[#EAF3EB] dark:bg-emerald-950/40 px-2 py-0.5 rounded-full">
-                        {language === 'en' ? 'Source: Open Food Facts' : 'Quelle: Open Food Facts'}
+                        {language === 'en' ? 'Source: Swiss Food Composition Database' : 'Quelle: Swiss Food Composition Database'}
                       </p>
                     </div>
 
@@ -2810,38 +3017,103 @@ export default function App() {
                           protein_g: language === 'en' ? "Protein" : "Eiweiß",
                           carbs_g: language === 'en' ? "Carbohydrates" : "Kohlenhydrate",
                           fiber_g: language === 'en' ? "Fiber" : "Ballaststoffe",
-                          sugar_g: language === 'en' ? "Sugars" : "Zucker",
+                          sugars_g: language === 'en' ? "Sugars" : "Zucker",
                           fat_g: language === 'en' ? "Total Fat" : "Fett",
                           saturated_fat_g: language === 'en' ? "Saturated Fat" : "Gesättigte Fettsäuren",
                           salt_g: language === 'en' ? "Salt" : "Salz"
                         };
 
-                        return Object.entries(currentFoodDetail.nutrients_per_100).map(([key, val]) => {
-                          const dv = getMacroDV(key, val as number);
-                          return (
-                            <div key={key} className="space-y-1">
-                              <div className="flex justify-between items-end text-sm leading-none">
-                                <span className="font-medium text-neutral-700 dark:text-neutral-300">
-                                  {labels[key]}
-                                </span>
-                                <div className="flex gap-3 text-right font-sans">
-                                  <span className="font-bold text-neutral-900 dark:text-neutral-100">{val}{key === "kcal" ? " kcal" : "g"}</span>
-                                  <span className="font-bold text-[#519D46] dark:text-emerald-400 w-8">{dv}%</span>
+                        return Object.entries(currentFoodDetail.nutrients_per_100)
+                          .filter(([key]) => key !== 'kcal' && key !== 'micros')
+                          .map(([key, val]) => {
+                            const dv = getMacroDV(key, val as number);
+                            return (
+                              <div key={key} className="space-y-1">
+                                <div className="flex justify-between items-end text-sm leading-none">
+                                  <span className="font-medium text-neutral-700 dark:text-neutral-300">
+                                    {labels[key] || key}
+                                  </span>
+                                  <div className="flex gap-3 text-right font-sans">
+                                    <span className="font-bold text-neutral-900 dark:text-neutral-100">{val}g</span>
+                                    <span className="font-bold text-[#519D46] dark:text-emerald-400 w-8">{dv}%</span>
+                                  </div>
+                                </div>
+                                <div className="h-1 bg-[#F2F6F1] dark:bg-neutral-800 rounded-full overflow-hidden">
+                                  <div 
+                                    className="h-full bg-[#519D46] dark:bg-emerald-500 rounded-full" 
+                                    style={{ width: `${Math.min(dv, 100)}%` }}
+                                  />
                                 </div>
                               </div>
-                              <div className="h-1 bg-[#F2F6F1] dark:bg-neutral-800 rounded-full overflow-hidden">
-                                <div 
-                                  className="h-full bg-[#519D46] dark:bg-emerald-500 rounded-full" 
-                                  style={{ width: `${Math.min(dv, 100)}%` }}
-                                />
-                              </div>
-                            </div>
-                          );
+                            );
                         });
                       })()}
                     </div>
                   </div>
                 </div>
+
+                {/* Vitamins & Minerals Section */}
+                {currentFoodDetail.nutrients_per_100.micros && Object.values(currentFoodDetail.nutrients_per_100.micros).some(v => v !== null && v !== undefined) && (
+                  <div className="bg-white dark:bg-neutral-900 rounded-[1.25rem] border border-[#E5EAE3] dark:border-neutral-800 p-5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] mt-4">
+                    <h4 className="text-[17px] font-bold text-neutral-900 dark:text-neutral-100 tracking-tight mb-4">
+                      {language === 'en' ? 'Vitamins & Minerals (per 100g)' : 'Vitamine & Mineralstoffe (pro 100g)'}
+                    </h4>
+                    <div className="space-y-3.5">
+                      {Object.entries(currentFoodDetail.nutrients_per_100.micros)
+                        .filter(([_, val]) => val !== null && val !== undefined)
+                        .map(([key, val]) => {
+                          const formatKey = (k) => {
+                            const names = {
+                              vitamin_a_ug: "Vitamin A", betacarotene_ug: "Beta-Carotene",
+                              vitamin_b1_mg: "Vitamin B1", vitamin_b2_mg: "Vitamin B2",
+                              vitamin_b6_mg: "Vitamin B6", vitamin_b12_ug: "Vitamin B12",
+                              niacin_mg: "Niacin", folate_ug: "Folate",
+                              pantothenic_acid_mg: "Pantothenic Acid", vitamin_c_mg: "Vitamin C",
+                              vitamin_d_ug: "Vitamin D", vitamin_e_mg: "Vitamin E",
+                              sodium_mg: "Sodium", potassium_mg: "Potassium",
+                              chloride_mg: "Chloride", calcium_mg: "Calcium",
+                              magnesium_mg: "Magnesium", phosphorus_mg: "Phosphorus",
+                              iron_mg: "Iron", iodide_ug: "Iodide", zinc_mg: "Zinc"
+                            };
+                            return names[k] || k.replace(/_/g, ' ');
+                          };
+                          const getDV = (k, v) => {
+                            const dvs = {
+                              vitamin_a_ug: 900, vitamin_c_mg: 90, vitamin_d_ug: 20,
+                              calcium_mg: 1000, iron_mg: 14, potassium_mg: 3500,
+                              magnesium_mg: 400, zinc_mg: 11, sodium_mg: 2300,
+                              vitamin_b12_ug: 2.4, vitamin_b6_mg: 1.7
+                            };
+                            const standard = dvs[k];
+                            if (!standard) return null;
+                            return Math.round((v / standard) * 100);
+                          };
+                          const dv = getDV(key, val);
+                          const isUg = key.endsWith('_ug');
+                          
+                          return (
+                              <div key={key} className="space-y-1">
+                                <div className="flex justify-between items-end text-sm leading-none">
+                                  <span className="font-medium text-neutral-700 dark:text-neutral-300">
+                                    {formatKey(key)}
+                                  </span>
+                                  <div className="flex gap-3 text-right font-sans">
+                                    <span className="font-bold text-neutral-900 dark:text-neutral-100">{val}{isUg ? 'µg' : 'mg'}</span>
+                                    <span className="font-bold text-[#519D46] dark:text-emerald-400 w-8">{dv !== null ? dv + '%' : 'N/A'}</span>
+                                  </div>
+                                </div>
+                                <div className="h-1 bg-[#F2F6F1] dark:bg-neutral-800 rounded-full overflow-hidden">
+                                  <div 
+                                    className="h-full bg-[#519D46] dark:bg-emerald-500 rounded-full" 
+                                    style={{ width: `${Math.min(dv || 0, 100)}%` }}
+                                  />
+                                </div>
+                              </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                )}
 
                 {currentFoodDetail.offUrl && (
                   <div className="pt-2">
@@ -2853,7 +3125,7 @@ export default function App() {
                       id="off_link_button"
                     >
                       <ExternalLink className="w-5 h-5 text-[#2F7E41] dark:text-emerald-400" />
-                      {language === 'en' ? 'View on Open Food Facts' : 'Auf Open Food Facts ansehen'}
+                      {language === 'en' ? 'View in Swiss Food DB' : 'In Schweizer Nährwertdatenbank ansehen'}
                     </a>
                   </div>
                 )}

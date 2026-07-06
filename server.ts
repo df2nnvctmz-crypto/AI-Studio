@@ -641,10 +641,12 @@ function generateRealisticFallback(name: string, id: string): any {
       kcal: calories,
       protein_g: protein,
       fiber_g: fiber,
-      sugar_g: sugars,
+      carbs_g: carbs,
+      sugars_g: sugars,
       fat_g: fat,
       saturated_fat_g: saturatedFat,
-      salt_g: sodium * 2.5 / 1000
+      salt_g: sodium * 2.5 / 1000,
+      micros: {}
     }
   };
 }
@@ -950,14 +952,53 @@ app.post("/api/generate-food", async (req, res) => {
         nutrients_per_100: {
           protein_g: Number((offData.nutriments?.proteins_100g || 0).toFixed(1)),
           fiber_g: Number((offData.nutriments?.fiber_100g || 0).toFixed(1)),
-          sugar_g: Number((offData.nutriments?.sugars_100g || 0).toFixed(1)),
+          carbs_g: Number((offData.nutriments?.carbohydrates_100g || 0).toFixed(1)),
+          sugars_g: Number((offData.nutriments?.sugars_100g || 0).toFixed(1)),
           fat_g: Number((offData.nutriments?.fat_100g || 0).toFixed(1)),
           saturated_fat_g: Number((offData.nutriments?.['saturated-fat_100g'] || 0).toFixed(1)),
           salt_g: Number((offData.nutriments?.sodium_100g || 0)) * 2.5, // approximate salt
-          kcal: Math.round(offData.nutriments?.['energy-kcal_100g'] || offData.nutriments?.['energy-kcal'] || 100)
+          kcal: Math.round(offData.nutriments?.['energy-kcal_100g'] || offData.nutriments?.['energy-kcal'] || 100),
+          micros: {}
         }
       };
+      
+      // Try to find a healthy swap from local DB
+      let bestSwap = null;
+      let minDistance = Infinity;
+      if (healthScore < 85) {
+        const candidates = FOODS.filter(c => c.category === computedCategory && c.health_score > healthScore + 5 && c.health_score >= 65);
+        for (const cand of candidates) {
+          const n1 = food.nutrients_per_100;
+          const n2 = cand.nutrients_per_100;
+          let distance = 0;
+          distance += Math.abs((n1.kcal || 0) - (n2.kcal || 0)) * 0.1;
+          distance += Math.abs((n1.protein_g || 0) - (n2.protein_g || 0)) * 2;
+          distance += Math.abs((n1.fat_g || 0) - (n2.fat_g || 0)) * 1.5;
+          distance += Math.abs((n1.fiber_g || 0) - (n2.fiber_g || 0)) * 1;
+          distance += Math.abs((n1.sugars_g || 0) - (n2.sugars_g || 0)) * 0.5;
+          
+          const words1 = (food.name || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ');
+          const words2 = (cand.name || '').toLowerCase().replace(/[^a-z0-9 ]/g, '').split(' ');
+          let common = 0;
+          for (const w of words1) {
+            if (words2.includes(w) && w.length > 2) {
+              common++;
+            }
+          }
+          distance -= common * 15;
+          
+          if (distance < minDistance) {
+            minDistance = distance;
+            bestSwap = cand;
+          }
+        }
+      }
+      if (bestSwap) {
+        food.swap_suggestion_id = bestSwap.id;
+      }
+      
       return res.json(food);
+
     }
 
     // 3. Fall back to smart, realistic nutrition fallback (zero AI)
